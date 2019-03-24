@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "DevOneBitCode",
-=======
   "name": "ProgramadoroTracker",
->>>>>>> 35b7edd90aded491b56510bdcba2ea3bc9c2594f
   "private": true,
   "dependencies": {}
 }
