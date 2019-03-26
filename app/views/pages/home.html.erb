@@ -1,22 +1,35 @@
 <div class="row home">
-        <div class="center">
-          <h4 class="title">Aumente sua produtividade nas suas Tarefas</h4>
-        </div>
-        <br>
-        <div class="container clock-container">
-          <div id="clock">00:00</div>
-          <div>
-            <div id="initial" class="clock-buttons" >
-              <a class="button is-success is-fullwidth" onclick="start(1);">Initial</a>
-            </div>
-            <div id="pause" class="clock-buttons">
-              <a class="button is-link is-fullwidth is-hidden" onclick="pause_timer();">Pause</a>
-            </div>
-            <div id="stop" class="clock-buttons">
-              <a class="button is-danger is-fullwidth is-hidden" onclick="stop();">Stop</a>
-            </div>
-            <input id="pause_value" type="hidden" value="0"  class="form-control">
-          </div> 
-        </div>
+  <div class="center">
+    <h4 class="title">Aumente a produtividade nas suas Tarefas</h4>
+  </div>
+  <br>
+  <div class="container clock-container">
+    <div id="clock">00:00</div>
+    <div>
+      <div id="initial" class="clock-buttons" >
+        <a class="button is-success is-fullwidth" onclick="start(1);">Initial</a>
+      </div>
+      <div id="pause" class="clock-buttons">
+        <a class="button is-link is-fullwidth is-hidden" onclick="pause_timer();">Pause</a>
+      </div>
+      <div id="stop" class="clock-buttons">
+        <a class="button is-danger is-fullwidth is-hidden" onclick="stop();">Stop</a>
+      </div>
+      <input id="pause_value" type="hidden" value="0"  class="form-control">
+    </div> 
+  </div>
+
+  <div>
+    <%= render 'tasks/form', task: @task %>
+  </div>
+
+  <div>
+    <%= render 'tasks/list_todo', task: @task %>
+  </div>
+
+  <div>
+    <%= render 'tasks/list_history', task: @task %>
+  </div>
+</div>
         
 </div>
