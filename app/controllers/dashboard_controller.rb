@@ -3,4 +3,9 @@ class DashboardController < ApplicationController
     def index
 
     end
+
+    def stats
+      @currentUser = current_user
+    end
+
   end
