@@ -1,7 +1,7 @@
 <nav class="navbar is-primary">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#" style="font-weight:bold;">
+      <a class="navbar-item" href="/" style="font-weight:bold;">
         ProgramadoroTracker
       </a>
       <span class="navbar-burger burger" data-target="navMenu">
@@ -14,7 +14,7 @@
       <div class="navbar-end">
           <% if current_user %>
             <a href="/dashboard" class="navbar-item">Dashboard</a>
-            <a href="#" class="navbar-item">Estatisticas</a>
+            <a href="/dashboard/stats" class="navbar-item">Estatisticas</a>
             <a href="#" class="navbar-item">Configurações</a>
             <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "navbar-item"%>
             <% else %>
