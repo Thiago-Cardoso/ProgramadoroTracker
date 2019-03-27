@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   user: one
   category: one
   description: MyString
@@ -15,3 +16,15 @@ two:
   date_end: 2019-03-26 00:23:00
   is_current: 
   stat: MyString
+=======
+  category: MyString
+  description: MyString
+  status: false
+  user: one
+
+two:
+  category: MyString
+  description: MyString
+  status: false
+  user: two
+>>>>>>> master

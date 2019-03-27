@@ -1,0 +1,14 @@
+<table>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.category.description %></td>
+        <td><%= link_to task.description, edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'complete', check_task_path(task), :remote => true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

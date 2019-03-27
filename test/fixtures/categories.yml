@@ -1,7 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   description: MyString
 
 two:
   description: MyString
+=======
+  name: MyString
+
+two:
+  name: MyString
+>>>>>>> master

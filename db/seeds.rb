@@ -21,7 +21,8 @@ Category.create(user_id: 1,description: "category 2")
 Category.create(user_id: 1,description: "category 3")
 
 puts "Cadastrando task...."
-Task.create(user_id: 1, category_id: 1, description: "task 1", date_end: Time.now, is_current: 1, status: 0)
-Task.create(user_id: 1, category_id: 2, description: "task 2", date_end: Time.now, is_current: 0, status: 0)
-Task.create(user_id: 1, category_id: 3, description: "task 3", date_end: Time.now, is_current: 0, status: 1)
-Task.create(user_id: 1, category_id: 4, description: "task 4", date_end: Time.now, is_current: 0, status: 1)
+
+Task.create(user_id: 1, category_id: 1, description: "task 1", date_end: Time.now, is_current: 1, status: 0, pomodoro_count: 2, work_time:Time.now, pause_time:Time.now)
+Task.create(user_id: 1, category_id: 2, description: "task 2", date_end: Time.now, is_current: 0, status: 0, pomodoro_count: 3, work_time:Time.now, pause_time:Time.now)
+Task.create(user_id: 1, category_id: 3, description: "task 3", date_end: Time.now, is_current: 0, status: 1, pomodoro_count: 4, work_time:Time.now, pause_time:Time.now)
+Task.create(user_id: 1, category_id: 4, description: "task 4", date_end: Time.now, is_current: 0, status: 1, pomodoro_count: 5, work_time:Time.now, pause_time:Time.now)

@@ -137,4 +137,22 @@
       </div>
     </div>
   </div>
+
+  <%
+=begin%>
+ <div>
+    <%= render 'tasks/form', task: @task %>
+  </div>
+
+  <div>
+    <%= render 'tasks/list_todo', task: @task %>
+  </div>
+
+  <div>
+    <%= render 'tasks/list_history', task: @task %>
+  </div> 
+<%
+=end%>
+</div>
+        
 </div>
