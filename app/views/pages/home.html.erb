@@ -73,6 +73,7 @@
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
                                       <td><%= task.description %></td>
                                       <td><a class="button is-small is-primary" href="#">Action</a></td>
+                                      <td><%= link_to 'complete', check_task_path(task), :remote => true, :class => "button is-small is-primary" %>
                                     </tr>
                                   <% end %>  
                                 <% else %> 
