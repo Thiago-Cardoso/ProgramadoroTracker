@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2019_03_26_022626) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "category"
     t.string "description"
     t.boolean "status"
     t.datetime "end_date"
