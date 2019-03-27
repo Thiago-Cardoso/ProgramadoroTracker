@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: one
+  description: MyString
+  date_end: 2019-03-26 00:23:00
+  is_current: 
+  stat: MyString
+
+two:
+  user: two
+  category: two
+  description: MyString
+  date_end: 2019-03-26 00:23:00
+  is_current: 
+  stat: MyString

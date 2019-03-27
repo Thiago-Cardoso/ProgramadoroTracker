@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_235622) do
+ActiveRecord::Schema.define(version: 2019_03_26_024431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "description", limit: 200
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "configuration_tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "duration"
+    t.integer "duration_break"
+    t.integer "duration_break_long"
+    t.integer "long_pause_delay"
+    t.boolean "have_song"
+    t.integer "template"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_configuration_tasks_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.string "description", limit: 200
+    t.datetime "date_end"
+    t.boolean "is_current"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +62,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_235622) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "users"
+  add_foreign_key "configuration_tasks", "users"
+  add_foreign_key "tasks", "categories"
+  add_foreign_key "tasks", "users"
 end

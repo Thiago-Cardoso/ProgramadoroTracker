@@ -2,12 +2,39 @@ var second = new Number();
 var str_time = new Number();
 var minute = new Number(); 
 
-var minute= 1; //trocar pelo valor que vem dos parametros 
-var second= 10; //trocar pelo valor que vem dos parametros
+// var minute= 1; //trocar pelo valor que vem dos parametros 
+var second= 0;
 var pause = 0;
 var control = 1;
 
+$(function(){
+  $.ajax({
+    method:"GET",
+    url: "config/",
+    dataType: "json",
+  }).done(function(data){
+    // minute = data.duration;
+    json_data(data);
+    // console.log("minute: " + minute);
+  })
+  .fail(function(e){ 
+    console.log("Ocorreu um erro!");
+  });
+
+});
+
+function json_data(data){
+
+  minute = data.duration;
+  var duration_break = data.duration_break;
+  var duration_break_long = data.duration_break_long;
+  var long_pause_delay = data.long_pause_delay;
+  var have_song = data.have_song;
+}
+
+
 function start(control){
+
   if(control == 1){
     if(second != 0 || minute != 0){
       second = second +1;
@@ -29,7 +56,9 @@ function start(control){
   if((second - 1) >= 0){
     second = second - 1;
     if(second == 0 && minute == 0){
-      sound();
+      
+      if(have_song){ sound(); }
+            
       str_time = "00:00";  
     }else if(second < 10 && minute == 0){
       str_time = "00:0"+second;

@@ -1,22 +1,140 @@
-<div class="row home">
-        <div class="center">
-          <h4 class="title">Aumente sua produtividade nas suas Tarefas</h4>
+<div class="container">
+  <div class="row home">
+    <div class="center">
+      <h4 class="title">Aumente sua produtividade nas suas Tarefas</h4>
+    </div>
+    <br>
+    <div class="container clock-container">
+      <div id="clock">00:00</div>
+      <div>
+        <div id="initial" class="clock-buttons" >
+          <a class="button is-success is-fullwidth" onclick="start(1);">Initial</a>
         </div>
-        <br>
-        <div class="container clock-container">
-          <div id="clock">00:00</div>
-          <div>
-            <div id="initial" class="clock-buttons" >
-              <a class="button is-success is-fullwidth" onclick="start(1);">Initial</a>
-            </div>
-            <div id="pause" class="clock-buttons">
-              <a class="button is-link is-fullwidth is-hidden" onclick="pause_timer();">Pause</a>
-            </div>
-            <div id="stop" class="clock-buttons">
-              <a class="button is-danger is-fullwidth is-hidden" onclick="stop();">Stop</a>
-            </div>
-            <input id="pause_value" type="hidden" value="0"  class="form-control">
-          </div> 
+        <div id="pause" class="clock-buttons">
+          <a class="button is-link is-fullwidth is-hidden" onclick="pause_timer();">Pause</a>
         </div>
-        
+        <div id="stop" class="clock-buttons">
+          <a class="button is-danger is-fullwidth is-hidden" onclick="stop();">Stop</a>
+        </div>
+        <input id="pause_value" type="hidden" value="0"  class="form-control">
+      </div> 
+    </div>
+
+
+    <br/>
+    <section class="info-tiles">
+        <div class="tile is-ancestor has-text-centered">
+          <div class="tile is-parent">
+              <article class="tile is-child box">
+                  <p class="title"><%= @tasks.count %></p>
+                  <p class="subtitle">Tasks</p>
+              </article>
+          </div>
+          <div class="tile is-parent">
+              <article class="tile is-child box">
+                  <p class="title"><%= @tasks.where(status: 0).count %></p>
+                  <p class="subtitle">To do</p>
+              </article>
+          </div>
+          <div class="tile is-parent">
+              <article class="tile is-child box">
+                  <p class="title"><%= @tasks.where(status: 1).count %></p>
+                  <p class="subtitle">Done</p>
+              </article>
+          </div>
+        </div>
+    </section>
+    <hr/>
+    <div class="container">
+      <div class="column is-9">
+          <div class="columns">
+          <div class="column is-6">
+              <div class="card events-card">
+                  <header class="card-header">
+                      <p class="card-header-title">
+                        <span class="icon is-small">
+                            <i class="fa fa-history" aria-hidden="true"></i>
+                        </span>
+                        <span>To do</span>
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                      <span class="icon">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </header>
+                  <div class="card-table">
+                      <div class="content">
+                          <table class="table is-fullwidth is-striped">
+                              <tbody>
+                                <% if !@array_tasks["0"].nil? %>
+                                  <% @array_tasks["0"].each do | task | %>
+                                    <tr>
+                                      <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                      <td><%= task.description %></td>
+                                      <td><a class="button is-small is-primary" href="#">Action</a></td>
+                                    </tr>
+                                  <% end %>  
+                                <% else %> 
+                                  <tr>
+                                    <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                    <td>No records Found!</td>
+                                    <td><a class="button is-small is-primary" href="#">Action</a></td>
+                                  </tr>
+                                <% end %>  
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+                  <footer class="card-footer">
+                      <a href="#" class="card-footer-item">View All</a>
+                  </footer>
+              </div>
+          </div>
+          <div class="column is-6">
+              <div class="card events-card">
+                  <header class="card-header">
+                      <p class="card-header-title">
+                          <span class="icon is-small">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                          </span>
+                          <span> Done</span>
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                      <span class="icon">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </header>
+                  <div class="card-table">
+                      <div class="content">
+                          <table class="table is-fullwidth is-striped">
+                              <tbody>
+                                <% if !@array_tasks["1"].nil? %>
+                                  <% @array_tasks["1"].each do | task | %>
+                                    <tr>
+                                      <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                      <td><%= task.description %></td>
+                                      <td><a class="button is-small is-primary" href="#">Action</a></td>
+                                    </tr>
+                                  <% end %>  
+                                <% else %> 
+                                  <tr>
+                                    <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                    <td>No records Found!</td>
+                                    <td><a class="button is-small is-primary" href="#">Action</a></td>
+                                  </tr>
+                                <% end %>  
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+                  <footer class="card-footer">
+                      <a href="#" class="card-footer-item">View All</a>
+                  </footer>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
