@@ -10,29 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_03_26_024431) do
-=======
-ActiveRecord::Schema.define(version: 2019_03_26_022626) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-<<<<<<< HEAD
     t.bigint "user_id"
     t.string "description", limit: 200
-=======
-    t.string "description"
-    t.bigint "user_id"
->>>>>>> master
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-<<<<<<< HEAD
   create_table "configuration_tasks", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "duration"
@@ -47,14 +37,6 @@ ActiveRecord::Schema.define(version: 2019_03_26_022626) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.string "description", limit: 200
-    t.datetime "date_end"
-    t.boolean "is_current"
-    t.string "status"
-=======
-  create_table "tasks", force: :cascade do |t|
     t.string "description"
     t.boolean "status"
     t.datetime "end_date"
@@ -64,7 +46,6 @@ ActiveRecord::Schema.define(version: 2019_03_26_022626) do
     t.bigint "pause_time"
     t.bigint "user_id"
     t.bigint "category_id"
->>>>>>> master
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_tasks_on_category_id"
@@ -85,10 +66,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_022626) do
   end
 
   add_foreign_key "categories", "users"
-<<<<<<< HEAD
   add_foreign_key "configuration_tasks", "users"
-=======
->>>>>>> master
   add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
 end

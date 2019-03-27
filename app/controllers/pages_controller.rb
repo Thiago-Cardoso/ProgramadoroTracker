@@ -3,7 +3,7 @@ class PagesController < ApplicationController
       @tasks = Task.all
       @array_tasks = Array.new 
       @array_tasks = @tasks.group_by { |t| t.status}
-      # puts @array_tasks["0"]
+      puts @array_tasks['false']
     end
 
     def get_config

@@ -67,8 +67,8 @@
                       <div class="content">
                           <table class="table is-fullwidth is-striped">
                               <tbody>
-                                <% if !@array_tasks["0"].nil? %>
-                                  <% @array_tasks["0"].each do | task | %>
+                                <% if !@tasks.where(status: 0).nil? %>
+                                  <% @tasks.where(status: 0).each do | task | %>
                                     <tr>
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
                                       <td><%= task.description %></td>
@@ -110,8 +110,8 @@
                       <div class="content">
                           <table class="table is-fullwidth is-striped">
                               <tbody>
-                                <% if !@array_tasks["1"].nil? %>
-                                  <% @array_tasks["1"].each do | task | %>
+                                <% if !@tasks.where(status: 1).nil? %>
+                                  <% @tasks.where(status: 1).each do | task | %>
                                     <tr>
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
                                       <td><%= task.description %></td>
