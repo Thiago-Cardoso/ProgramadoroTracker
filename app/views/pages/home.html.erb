@@ -20,6 +20,10 @@
       </div> 
     </div>
 
+    <div>
+      <%= render 'tasks/form', task: @task %>
+    </div>
+
 
     <br/>
     <section class="info-tiles">
@@ -32,14 +36,24 @@
           </div>
           <div class="tile is-parent">
               <article class="tile is-child box">
+                <% if current_user %>
                   <p class="title"><%= @tasks.where(status: 0).count %></p>
                   <p class="subtitle">To do</p>
+                <% else %>
+                  <p class="title">0</p>
+                  <p class="subtitle">To do</p>
+                <% end %>
               </article>
           </div>
           <div class="tile is-parent">
               <article class="tile is-child box">
+                <% if current_user %>
                   <p class="title"><%= @tasks.where(status: 1).count %></p>
                   <p class="subtitle">Done</p>
+                <% else %>
+                  <p class="title">0</p>
+                  <p class="subtitle">Done</p>
+                <% end %>
               </article>
           </div>
         </div>
@@ -67,12 +81,11 @@
                       <div class="content">
                           <table class="table is-fullwidth is-striped">
                               <tbody>
-                                <% if !@tasks.where(status: 0).nil? %>
+                                <% if @tasks.count > 0 && !@tasks.where(status: 0).nil? %>
                                   <% @tasks.where(status: 0).each do | task | %>
                                     <tr>
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
                                       <td><%= task.description %></td>
-                                      <td><a class="button is-small is-primary" href="#">Action</a></td>
                                       <td><%= link_to 'complete', check_task_path(task), :remote => true, :class => "button is-small is-primary" %>
                                     </tr>
                                   <% end %>  
@@ -111,7 +124,7 @@
                       <div class="content">
                           <table class="table is-fullwidth is-striped">
                               <tbody>
-                                <% if !@tasks.where(status: 1).nil? %>
+                                <% if @tasks.count > 0 && !@tasks.where(status: 1).nil? %>
                                   <% @tasks.where(status: 1).each do | task | %>
                                     <tr>
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
