@@ -24,6 +24,14 @@ services:
     volumes:
       - box:/box
 
+  adminer:
+    depends_on:
+      - "db"
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
 volumes:
   postgres:
   box:
