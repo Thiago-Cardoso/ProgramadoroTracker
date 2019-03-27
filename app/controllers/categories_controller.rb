@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :current_category, only: [:show, :destroy]
 
   def index
-    @categories = Categorie.all
+    @categories = current_user.categories.all
   end
 
   def show
@@ -10,25 +10,25 @@ class CategoriesController < ApplicationController
 
 
   def new
-    @categorie = Categorie.new
+    @category = Category.new
   end
 
   def create
-    categorie = Categorie.create(categorie_params)
+    category = Category.create(category_params)
   end
 
   def destroy
-    @categorie.destroy
+    @category.destroy
   end
 
   private
 
-  def categorie_params
-    params.require(:categorie).permit(:name)
+  def category_params
+    params.require(:category).permit(:name)
   end
 
   def current_category
-    @categorie = Categorie.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
 end

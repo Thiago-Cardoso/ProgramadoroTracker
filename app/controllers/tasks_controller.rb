@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.where(status: :false)
   end
 
   # GET /tasks/1
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @categories = current_user.categories.all
+    @categories = current_user.tasks.where(status: :false)
   end
 
   # POST /tasks
