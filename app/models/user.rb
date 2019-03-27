@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :tasks
   has_many :categories
+  has_one :configuration_task
 end

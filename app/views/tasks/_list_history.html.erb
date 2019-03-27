@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @tasks.each do |task| %>
+    <% @history.each do |task| %>
       <tr>
         <td><%= task.category.description %></td>
         <td><%= link_to task.description, edit_task_path(task) %></td>

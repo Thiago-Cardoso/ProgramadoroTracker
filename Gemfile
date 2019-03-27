@@ -13,6 +13,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'nokogiri', '~> 1.8', '>= 1.8.4'
+gem "font-awesome-rails"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 

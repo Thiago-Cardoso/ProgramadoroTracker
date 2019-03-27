@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  duration: 1
+  duration_break: 1
+  duration_break_long: 1
+  long_pause_delay: 1
+  have_song: 
+
+two:
+  user: two
+  duration: 1
+  duration_break: 1
+  duration_break_long: 1
+  long_pause_delay: 1
+  have_song: 
