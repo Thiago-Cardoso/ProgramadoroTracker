@@ -17,7 +17,9 @@ class PagesController < ApplicationController
     end
 
     def get_config
-      @config = current_user.configurationTask.first
+      @config = ConfigurationTask.where(user_id: current_user.id).last
+
+      puts @config
       render json: @config
 
       @task = Task.new
