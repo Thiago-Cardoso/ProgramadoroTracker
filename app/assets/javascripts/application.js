@@ -26,8 +26,10 @@ $(document).on('turbolinks:load', function() {
 			burger.classList.toggle('is-active');
 			nav.classList.toggle('is-active');
 		});
+		$("#btnTaskInsert").hide();
 	})();
 });
+
 
 // fullcalendar
 function eventCalendar() {
@@ -58,6 +60,29 @@ function clearCalendar() {
 
 $(document).on('turbolinks:load', function() {
 	eventCalendar();
+	//task edit and insert
+	$("button#edit").on('click', function(){
+		var id = $(this).data('id');
+		var id_cat = $(this).data('id_cat');
+		var description = $(this).data('description');
+		$("#task_description").val(description);
+		$("#task_category_id").val(id_cat);
+
+		$('#frmtask').append('<input type="hidden" name="_method" value="patch" />');
+		$("#frmtask").attr('action', '/tasks/'+id);
+
+		$("#btnTask").text("Editar");
+		$("#btnTaskInsert").show();
+		$("#btnTaskInsert").text("Inserir Novo");
+		
+	});
+
+	$("button#btnTaskInsert").on('click', function(){
+		$("#task_description").val();
+		$("#task_category_id").val();
+		
+	});
+
 });
 
 $(document).on('turbolinks:before-cache', clearCalendar);
