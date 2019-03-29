@@ -14,6 +14,7 @@
 //= require rails-ujs
 //= require moment
 //= require fullcalendar
+//= require jquery-ui
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -86,3 +87,9 @@ $(document).on('turbolinks:load', function() {
 });
 
 $(document).on('turbolinks:before-cache', clearCalendar);
+
+// datepicker - ui
+$(function() {
+	$('#datepicker1').datepicker( { dateFormat:'dd-mm-yy' } );
+	$('#datepicker2').datepicker( { dateFormat:'dd-mm-yy' } );
+});

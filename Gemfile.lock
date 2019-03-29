@@ -216,6 +216,7 @@ DEPENDENCIES
   fullcalendar-rails
   jbuilder (~> 2.5)
   jquery-rails
+  jquery-ui-rails
   listen (>= 3.0.5, < 3.2)
   momentjs-rails
   nokogiri (~> 1.8, >= 1.8.4)

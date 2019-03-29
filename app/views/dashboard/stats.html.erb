@@ -6,36 +6,45 @@
 
 <div class="hero-body">
   <div class="container has-text-centered">
-
-    <div class="columns is-vcentered">
-
-      <div class="column is-6">
-        <div class="box content">
-          <div id="calendar"></div>
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input" type="text" id="datepicker1"  placeholder="Date 1">
+        </div>  
+        <div class="control">
+          <input class="input" type="text" id="datepicker2"  placeholder="Date 2">
+        </div>
+        <div class="control">
+          <a class="button is-primary">
+            Search
+          </a>
         </div>
       </div>
+    <hr>
 
-      <!-- Column is-6 -->
+    <div class="columns is-vcentered">
       <div class="column is-6">
         <div class="box content">
           <h1>Tasks</h1>
           <table class="table is-responsive">
             <thead>
               <tr>
+                <th>Task</th>
                 <th>Categoria</th>
                 <th>Descrição</th>
-                <th>Tempo/Demora</th>
+                <th>status</th>
                 <th>Data</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>cell A1</td>
+                <td>cell A1</td>
                 <td>Lorem ipsum - cell B1</td>
                 <td>cell C1</td>
                 <td> cell D1</td>
               </tr>
               <tr>
+                <td>cell A1</td>
                 <td>cell A1</td>
                 <td>Lorem ipsum - cell B1</td>
                 <td>cell C1</td>
@@ -44,11 +53,15 @@
             </tbody>
           </table>
         </div>
+      </div>
 
+      <!-- Column is-6 -->
+      <div class="column is-6">
         <div class="box content">
           <h1>Grafico</h1>
         </div>
       </div><!-- End column is-6 -->
     </div>
+
   </div>
 </div>

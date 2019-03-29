@@ -12,6 +12,7 @@
  *
  *= require bulma
  *= require fullcalendar
+ *= require jquery-ui
  *= require_self
  */
 
@@ -39,4 +40,16 @@
 #calendar {
 	max-width: 560px;
 	margin: 0 auto;
+}
+.ui-widget-header {
+	background: #00d1b2;
+	color: hsl(0, 17%, 98%);
+}
+.ui-state-hover:hover {
+	background: none;
+}
+
+// ui-icon ui-icon-circle-triangle-w
+.ui-icon{
+	color: red;
 }

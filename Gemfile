@@ -16,6 +16,7 @@ gem 'nokogiri', '~> 1.8', '>= 1.8.4'
 gem "font-awesome-rails"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'jquery-ui-rails'
 
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
