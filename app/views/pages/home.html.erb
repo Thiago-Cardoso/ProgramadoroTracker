@@ -5,6 +5,7 @@
     </div>
     <br>
     <div class="container clock-container">
+      <div id="pomodoro" align="center"></div>
       <div id="clock">00:00</div>
       <div>
         <div id="initial" class="clock-buttons" >
@@ -37,7 +38,7 @@
           <div class="tile is-parent">
               <article class="tile is-child box">
                 <% if current_user %>
-                  <p class="title"><%= @tasks.where(status: 0).count %></p>
+                  <p class="title"><%= (!@array_tasks[false].nil?) ? @array_tasks[false].count : 0 %></p>
                   <p class="subtitle">To do</p>
                 <% else %>
                   <p class="title">0</p>
@@ -48,7 +49,7 @@
           <div class="tile is-parent">
               <article class="tile is-child box">
                 <% if current_user %>
-                  <p class="title"><%= @tasks.where(status: 1).count %></p>
+                  <p class="title"><%= (!@array_tasks[true].nil?) ? @array_tasks[true].count : 0 %></p>
                   <p class="subtitle">Done</p>
                 <% else %>
                   <p class="title">0</p>
@@ -60,7 +61,7 @@
     </section>
     <hr/>
     <div class="container">
-      <div class="column is-9">
+      <div class="column is-12">
           <div class="columns">
           <div class="column is-6">
               <div class="card events-card">
@@ -80,23 +81,22 @@
                   <div class="card-table">
                       <div class="content">
                           <table class="table is-fullwidth is-striped">
-                              <tbody>
-                                <% if @tasks.count > 0 && !@tasks.where(status: 0).nil? %>
-                                  <% @tasks.where(status: 0).each do | task | %>
-                                    <tr>
+                              <tbody id="div-todo">
+                                <% if @tasks.count > 0 && !@array_tasks[false].nil? %>
+                                  <% @array_tasks[false].each do | task | %>
+                                    <tr id="<%= task.id %>">
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
                                       <td><%= task.description %></td>
                                       <td><%= task.category.description %></td>
-                                      <td><button class="button is-small is-link" data-id_cat="<%= task.category.id %>" data-description="<%= task.description %>" data-id="<%= task.id %>" id="edit">Editar</button></td>
-                                      <td><%= link_to 'Completar', check_task_path(task), :remote => true, :class => "button is-small is-primary" %>
-                                      <td><%= link_to 'Deletar',  task, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir essa tarefa?' }, :class => "button is-small is-danger" %></td>
+                                      <td><button class="button is-small is-link" data-id_cat="<%= task.category.id %>" data-description="<%= task.description %>" data-id="<%= task.id %>" id="edit" title="Editar"><i class="fa fa-edit"></i></button></td>
+                                      <td><%= link_to '<i class="fa fa-clipboard"></i>'.html_safe, check_task_path(task), :remote => true, :title => "Completar", :class => "button is-small is-primary" %></td>
+                                      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, task, :title => "Deletar", method: :delete, data: { confirm: 'Você tem certeza que deseja excluir essa tarefa?' }, :class => "button is-small is-danger" %></td>
                                     </tr>
                                   <% end %>  
                                 <% else %> 
                                   <tr>
                                     <td width="5%"><i class="fa fa-bell-o"></i></td>
                                     <td>No records Found!</td>
-                                    <td><a class="button is-small is-primary" href="#">Action</a></td>
                                   </tr>
                                 <% end %>  
                               </tbody>
@@ -127,19 +127,18 @@
                       <div class="content">
                           <table class="table is-fullwidth is-striped">
                               <tbody>
-                                <% if @tasks.count > 0 && !@tasks.where(status: 1).nil? %>
-                                  <% @tasks.where(status: 1).each do | task | %>
+                                <% if @tasks.count > 0 && !@array_tasks[true].nil? %>
+                                  <% @array_tasks[true].each do | task | %>
                                     <tr>
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
                                       <td><%= task.description %></td>
-                                      <td><a class="button is-small is-primary" href="#">Action</a></td>
+                                      <td><%= task.end_date  %></td>
                                     </tr>
                                   <% end %>  
                                 <% else %> 
                                   <tr>
                                     <td width="5%"><i class="fa fa-bell-o"></i></td>
                                     <td>No records Found!</td>
-                                    <td><a class="button is-small is-primary" href="#">Action</a></td>
                                   </tr>
                                 <% end %>  
                               </tbody>

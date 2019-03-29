@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   
   get 'config/', to: 'pages#get_config', as: :get_task
+  post 'setStatusTask/', to: 'pages#set_status_task', as: :set_status_task
   
   
   resources :dashboard, only: [:index] do
