@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :categories
-  
+
   resources :tasks do
     get 'check', on: :member
   end
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'config/', to: 'pages#get_config', as: :get_task
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   resources :dashboard, only: [:index] do
     collection do
       get :dashboard, :stats
