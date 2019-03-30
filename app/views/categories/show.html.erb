@@ -1,2 +1,18 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="row">
+        <div class="col m8 offset-m2">
+                <div class="field">
+                        <p id="notice"><%= notice %></p>
+                        <h5>Categorias</h5>
+                </div>
+                  <p>
+                    <strong>Descrição:</strong>
+                    <%= @category.description %>
+                  </p>
+                  
+                  <%= link_to 'Editar', edit_category_path(@category) %> |
+                  <%= link_to 'Voltar', categories_path %>
+        </div>
+    </div>
+    
+    
+    

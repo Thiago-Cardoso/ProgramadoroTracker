@@ -1,0 +1,60 @@
+
+<%= form_for :configuration_task do |f| %>
+
+   
+    <div class="field">
+        <%= f.label :template %>
+      </div>
+
+      <div class="field">
+        <div class="select is-medium">
+          <select name="template" id="template">
+            <option value="Selecione"></option>
+            <option value="1" id="template1">default 25 5 15 4</option>
+            <option value="2" id="template2">working 50 10 20 2</option>
+            <option value="3" id="template3">personal 30 2 25 4</option>
+          </select>
+        </div>
+    </div>
+
+      <div class="field">
+        <%= f.label :duration %>
+        <%= f.text_field :duration , class:"input" %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :duration_break %>
+        <%= f.text_field :duration_break, class:"input" %>
+      </div>
+    
+      
+      <div class="field">
+            <%= f.label :duration_break_long %>
+            <%= f.text_field :duration_break_long, class:"input" %>
+        </div>
+    
+      <div class="field">
+        <%= f.label :long_pause_delay %>
+        <%= f.text_field :long_pause_delay , class:"input" %>
+      </div>
+
+      <div class="field">
+            <label>
+              <%= f.check_box :have_song %>
+              <span>Tem som</span>
+            </label>
+          </div>
+
+          
+
+        <div class="field">
+            <button class="button is-primary is-pulled-left"  type="submit">Cadastrar</button>
+        </div>
+
+<% end %>
+
+
+    
+    
+
+

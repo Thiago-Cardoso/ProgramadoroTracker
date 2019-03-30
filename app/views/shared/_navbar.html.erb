@@ -14,7 +14,8 @@
       <div class="navbar-end">
           <% if current_user %>
             <a href="/dashboard/stats" class="navbar-item">Estatisticas</a>
-            <a href="#" class="navbar-item">Configurações</a>
+            <a href="/categories" class="navbar-item">Categorias</a>
+            <a href="/configuration_task" class="navbar-item">Configurações</a>
             <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "navbar-item"%>
             <% else %>
             <a href="/users/sign_in" class="navbar-item">Entrar</a>

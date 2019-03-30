@@ -81,6 +81,7 @@ $(document).on('turbolinks:load', function() {
 		$('#task_description').val();
 		$('#task_category_id').val();
 	});
+
 });
 
 $(document).on('turbolinks:before-cache', clearCalendar);

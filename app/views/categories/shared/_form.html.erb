@@ -1,0 +1,35 @@
+
+<%= form_for(category) do |f| %>
+
+<% if category.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(category.errors.count, "error") %> prohibited information type from being saved:</h2>
+
+  <ul>
+  <% category.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="field">
+  <div class="field">
+          <h5>Nova categoria</h5>
+  </div>
+  <%= f.label :description %>
+  <%= f.text_field :description, class:"input" %>
+
+     <div class="actions" style="margin-top:15px;">
+      <%= f.submit "Enviar", class:'btn waves-effect waves-light' %>
+    </div>
+</div>
+
+<% end %>
+
+
+
+
+
+

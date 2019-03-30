@@ -1,0 +1,36 @@
+<%= render 'configuration_task/shared/form', configuration_task: @configuration_task %>
+
+
+
+<div class="row">
+        <div class="col m8 offset-m2">
+                <div class="field">
+                       <p id="notice"><%= notice %></p>
+                        <table>
+                            <thead>
+                              <tr>
+                                <th>Descrição</th>
+                                <th colspan="2"></th>
+                              </tr>
+                            </thead>
+                          
+                            <tbody>
+                              <% @configuration_tasks.each do |config| %>
+                                <tr>
+                                  <td><strong><%= config.id %></strong></td>
+                                  <td><%= config.duration %></td>
+                                  <td><%= config.duration_break %></td>
+                                  <td><%= config.duration_break_long %></td>
+                                  <td><%= config.long_pause_delay %></td>
+                                  <td><%= config.template %></td>
+                                  <td><%= config.user_id %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                          <br>
+                </div>
+        </div>
+    </div>
+    
+    
