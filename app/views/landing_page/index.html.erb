@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProgramadoroTracker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'timer.js' %>
+  </head>
+
+  <body>
+
+    <header>
+        <%= render "shared/navbar" %>
+    </header>
+
+      <main>
+	      <div class="container">
+	        inicio
+	      </div>
+	    </main>
+
+	    <footer>
+	      <%= render "shared/footer" %>
+	    </footer>
+  </body>
+</html>

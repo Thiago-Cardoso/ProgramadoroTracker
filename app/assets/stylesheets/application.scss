@@ -12,12 +12,13 @@
  *
  *= require bulma
  *= require fullcalendar
+ = require jquery-ui
  *= require_self
  */
 
- @import "shared/_footer";
- @import "shared/_login";
- @import "font-awesome";
+@import "shared/_footer";
+@import "shared/_login";
+@import "font-awesome";
 
 #clock {
 	font: bold 24pt sans;
@@ -39,4 +40,18 @@
 #calendar {
 	max-width: 560px;
 	margin: 0 auto;
+}
+
+// Datepicker Ui
+.ui-widget-header {
+	background: #00d1b2;
+	color: hsl(0, 17%, 98%);
+}
+.ui-state-hover:hover {
+	background: none;
+}
+
+// ui-icon ui-icon-circle-triangle-w
+.ui-icon {
+	color: red;
 }
