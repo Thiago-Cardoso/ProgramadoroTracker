@@ -49,7 +49,7 @@ docker-compose up
 4. Without turning off the server, open a new window and run the migrations
 
 ```
-docker-compose run --rm website bundle exec rails db:migrate    
+docker-compose run --rm website bundle exec rails db:migrate db:seed    
 if necessary populate database
 
 ```
