@@ -1,7 +1,32 @@
 
 <%= form_for :configuration_task do |f| %>
 
-   
+<% if configuration_task.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(configuration_task.errors.count, "error") %> prohibited information type from being saved:</h2>
+
+  <ul>
+  <% configuration_task.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+  <div class="field">
+  <p id="notice"><%= notice %></p>
+    <div class="row">
+        <div class="col m8 offset-m2">
+          <div class="field">
+            <h5><Strong>Configurações</Strong></h5>
+          </div>
+        </div>
+    </div>
+  </div>            
+
+  
     <div class="field">
         <%= f.label :template %>
       </div>

@@ -14,17 +14,16 @@
 <% end %>
 
 
-<div class="field">
-  <div class="field">
-          <h5>Nova categoria</h5>
-  </div>
-  <%= f.label "Descrição" %>
-  <%= f.text_field :description, class:"input" %>
+
+   <%= f.label "Descrição" %>
+    <%= f.text_field :description, class:"input" %>
 
      <div class="actions" style="margin-top:15px;">
-      <%= f.submit "Enviar", class:'btn waves-effect waves-light' %>
+      <%= f.submit "Enviar", class:'button is-small is-success' %>
     </div>
-</div>
+    <%= link_to 'Visualizar', @category %> |
+    <%= link_to 'Voltar', categories_path %>
+
 
 <% end %>
 
