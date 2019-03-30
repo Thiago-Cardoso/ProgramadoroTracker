@@ -10,10 +10,7 @@ puts "Cadastrando user...."
 User.create(name: 'teste', email: 'teste@gmail.com', password: '123456', password_confirmation: '123456')
 
 puts "Cadastrando configuration...."
-ConfigurationTask.create(user_id: 1, duration: 5, duration_break: 2, duration_break_long: 2, long_pause_delay: 2, have_song: 0, template: 1)
-ConfigurationTask.create(user_id: 1, duration: 6, duration_break: 3, duration_break_long: 4, long_pause_delay: 1, have_song: 0, template: 1)
-ConfigurationTask.create(user_id: 1, duration: 3, duration_break: 2, duration_break_long: 3, long_pause_delay: 3, have_song: 0, template: 1)
-ConfigurationTask.create(user_id: 1, duration: 2, duration_break: 1, duration_break_long: 2, long_pause_delay: 2, have_song: 0, template: 1)
+ConfigurationTask.create(user_id: 1, duration: 1, duration_break: 2, duration_break_long: 3, long_pause_delay: 4, have_song: 1, template: 1)
 
 puts "Cadastrando categoria...."
 Category.create(user_id: 1,description: "category 1")

@@ -4,7 +4,10 @@ var minute = new Number();
 
 var num_pomodoro = 1;
 var cont_flag_pomodoro = 1;
+var flag_color = 0;
+var flag_control = 0;
 var flag_interval = 0;
+
 var have_song = "";
 var duration_break = "";
 var duration_break_long = "";
@@ -15,49 +18,33 @@ var pause = 0;
 var control = 1;
 
 $(function(){
+  json_data();
+});
+
+function json_data(){
+
   $.ajax({
     method:"GET",
     url: "config/",
     dataType: "json",
   }).done(function(data){
-    // minute = data.duration;
-    json_data(data);
-    // console.log("minute: " + minute);
+    
+    minute = data.duration;
+    have_song = data.have_song;
+    duration_break = data.duration_break;
+    duration_break_long = data.duration_break_long;
+    long_pause_delay = data.long_pause_delay;
+        
+    console.log("minute: "+minute);
+    console.log("have_song: "+have_song);
+    console.log("duration_break: "+duration_break); //pausa curta 2
+    console.log("duration_break_long: "+duration_break_long); //pausa longa 3
+    console.log("long_pause_delay: "+long_pause_delay); //atraso de pausa longa 2 pomodoros
+    
   })
   .fail(function(e){ 
     console.log("Ocorreu um erro!");
   });
-
-});
-
-function json_data(data){
-
-  // minute = data.duration;
-  minute = 1;
-  have_song = data.have_song;
-  duration_break = data.duration_break;
-  // duration_break_long = data.duration_break_long;
-  duration_break_long = 3;
-  long_pause_delay = data.long_pause_delay;
-  have_song = 1;
-
-  console.log("minute: "+minute);
-  console.log("have_song: "+have_song);
-  console.log("duration_break: "+duration_break); //pausa curta 2
-  console.log("duration_break_long: "+duration_break_long); //pausa longa 3
-  console.log("long_pause_delay: "+long_pause_delay); //atraso de pausa longa 2 pomodoros
-
-
-// if(long_pause_delay > 0){
-//   //ver em qual pomodoro estamos
-
-// }
-
-  // $("#div-todo tr").each(function(){  
-  //   var task_id = $(this).attr("id")[0]; 
-  //   console.log(task_id)
-  // });
-
 }
 
 function pause_timer(){
@@ -65,24 +52,30 @@ function pause_timer(){
   var task_id = $("#div-todo tr").attr("id"); 
   if(pause===0){
     $('#pause_value').val(1);
-    $("#pause").children().html("Play");
+    $("#pause").children().html("Retornar");
     $("#initial").children().removeAttr("disabled");
 
-    if(flag_interval === 0){
-      //seta o background em azul da tarefa
+    if(flag_color === 0){
       if($.type(task_id) != "undefined"){
-        $("#div-todo tr").first().css({ backgroundColor: "#3273DC"});
+        $("#div-todo tr td").first().css({ backgroundColor: "#3273DC"});
+      }else{
+        $('#pause_value').val(1);
+        $('#clock').html(str_time);  
+        return false;
       }
     }
     
   }else{
     $('#pause_value').val(0);
-    $("#pause").children().html("Pause");
+    $("#pause").children().html("Pausar");
 
-    if(flag_interval === 0){
-    //seta o background em verde da tarefa
+    if(flag_color === 0){
       if($.type(task_id) != "undefined"){
-        $("#div-todo tr").first().css({ backgroundColor: "#23D160"});
+        $("#div-todo tr td").first().css({ backgroundColor: "#FF3860"});
+      }else{
+        $('#pause_value').val(1);
+        $('#clock').html(str_time);
+        return false;
       }
     }
     start(2);
@@ -90,28 +83,39 @@ function pause_timer(){
 }
 
 function start(control){
-
+  
   if(control == 1){
     if(second != 0 || minute != 0){
       second = second +1;
       $("#initial").children().attr("disabled","disabled");
       $("#pause").children().removeClass("is-hidden");
       $("#stop").children().removeClass("is-hidden");
+
+      console.log("minute:"+minute);
+      console.log("control:"+flag_color);
       
-      if(flag_interval === 0){
-        var task_id = $("#div-todo tr").attr("id")[0]; 
+      if(flag_color === 0){
+        var task_id = $("#div-todo tr").attr("id"); 
         if($.type(task_id) != "undefined"){
           //seta a tarefa em execução em verde
-          $("#div-todo tr").first().css({ backgroundColor: "#23D160"});
+          $("#div-todo tr td").first().css({ backgroundColor: "#FF3860"});
+          flag_interval = 0;
+        }else{
+          $('#clock').html(str_time);
+          stop();
+          return false;
         }
       }
-
     }
   }
 
   if(control == 2){
     $("#initial").children().attr("disabled","disabled");
   }
+
+  $(document).ready(function() {
+    $(this).attr("title", str_time+" ProgamadoroTracker");
+  });
 
   if(minute > 0 && second === 0){
     second = 60;
@@ -123,36 +127,64 @@ function start(control){
     if(second == 0 && minute == 0){
       if(have_song){ sound(); }
       str_time = "00:00";  
-
       num_pomodoro++;
       cont_flag_pomodoro++; 
-      // if(flag_interval === 0){
-      //   atualizaStatusTask();
-      // }
 
-      flag_interval = 0;
+      // console.log("flag_color: "+flag_color); //pausa longa 3
+      // console.log("cont_flag_pomodoro: "+cont_flag_pomodoro); //atraso de pausa longa 2 pomodoros
+
+      //pausa longa
       if( (long_pause_delay > 0) && (cont_flag_pomodoro === long_pause_delay) ){
         //troca a cor do relogio
         minute = duration_break_long;
-        flag_interval = 1;
-        cont_flag_pomodoro = 0;
-        $("#clock").first().css({ backgroundColor: "#3273DC"});
-        //TODO: adicionar text com mensagem
+        flag_color = 1;
+        cont_flag_pomodoro = 1;
+        flag_control = 1;
+        
+        $('#mensagem').html("<b>Faça uma pausa longa</b>");
+        $('#clock').html(str_time);
+        $('#pomodoro').html("<b>POMODORO: "+num_pomodoro+"</b>");
+        $("#clock").first().css({ backgroundColor: "#00D1B2"});
+        $("#pomodoro").first().css({ color:"#feffff", backgroundColor: "#00D1B2"});
+        $("#mensagem").first().css({ backgroundColor: "#00D1B2"});
+        console.log("pausa longa");
 
-      }else if(duration_break > 0){
+      }else if(duration_break > 0 && flag_control === 0){ //pausa curta
         minute = duration_break;
+        flag_control = 1;
+
+        $('#mensagem').html("<b>Faça uma pausa curta</b>");
+        $("#mensagem").first().css({ backgroundColor: "#00D1B2"});
+        $("#clock").first().css({ backgroundColor: "#00D1B2"});
+        $("#pomodoro").first().css({ color:"#feffff", backgroundColor: "#00D1B2"});
+        $("#initial").children().attr("disabled","disabled");
+        console.log("pausa curta");
+
+      }else if(flag_control === 1){
+        flag_control = 0;
+        flag_color = 0;
         flag_interval = 1;
-        $("#clock").first().css({ backgroundColor: "yellow"});
+        control = 1;
+
+        json_data();
+        // minute = 1;
+        // duration_break_long = 3;
+        // long_pause_delay = 4;
+        // have_song = 1;
+        
+        console.log("continua relogio");
+        $('#mensagem').html("");
+        $("#mensagem").first().css({ backgroundColor: "#FF3860"});
+        $("#clock").first().css({ backgroundColor: "#FF3860"});
+        $("#pomodoro").first().css({ color:"#feffff",backgroundColor: "#FF3860"});
+        $("#pause").children().removeAttr("disabled");
+        setTimeout('start(1);',1000);
+        return false;
       }
-
-      // console.log("duration_break: "+duration_break); //pausa curta 2
-      // console.log("duration_break_long: "+duration_break_long); //pausa longa 3
-      // console.log("long_pause_delay: "+long_pause_delay); //atraso de pausa longa 2 pomodoros
-
       
-    
-      
-
+      if(flag_control === 1 || flag_interval === 0){
+        atualizaStatusTask();
+      }
 
     }else if(second < 10 && minute == 0){
       str_time = "00:0"+second;
@@ -161,20 +193,19 @@ function start(control){
     }else{
       str_time = "00:"+second;
     }
-    call_timer_interval(str_time);
+    call_timer_interval();
   }
 }
 
-function call_timer_interval(str_time){
+function call_timer_interval(){
   pause = parseInt($('#pause_value').val());
   console.log("pause_start: "+pause)
   if(pause === 0){
     $('#clock').html(str_time);
-    $('#pomodoro').html("POMODORO: "+num_pomodoro);
+    $('#pomodoro').html("<b>POMODORO: "+num_pomodoro+"</b>");
     setTimeout(start,1000);
   }
 }
-
 
 function atualizaStatusTask(){
   // pega a primeira tarefa
@@ -188,9 +219,12 @@ function atualizaStatusTask(){
       dataType: "json",
     }).done(function(return_data){
       // console.log(return_data);
-      if(return_data){
-        location.reload();
-        // console.log("refresh na div todo");
+      if(return_data.status){
+        $("#"+return_data.id).remove(); 
+        var todo = (parseInt($("#div-todo").text()) - 1);
+        var done = (parseInt($("#div-done").text()) + 1);
+        $("#div-todo").text(todo);
+        $("#div-done").text(done);
       }
       
     }).fail(function(e){

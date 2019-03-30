@@ -23,9 +23,17 @@
 	font: bold 24pt sans;
 	text-align: center;
 	color: #feffff;
-	background: #00d1b2;
+	background: #FF3860;
 	padding: 10px;
 	margin-bottom: 10px;
+}
+
+
+#pomodoro,#mensagem {
+	text-align: center;
+	color: #feffff;
+	background: #FF3860;
+	padding: 10px;
 }
 
 .clock-container {
@@ -34,6 +42,8 @@
 
 .clock-buttons {
 	margin-bottom: 10px;
+	float:left; 
+	margin-left:35px;
 }
 
 #calendar {

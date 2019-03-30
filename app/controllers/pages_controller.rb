@@ -23,7 +23,7 @@ class PagesController < ApplicationController
 
     def set_status_task
       Task.update(params[:task_id], :status => true, :end_date => Time.now)
-      @finish_task = Task.find(params[:task_id]).status
+      @finish_task = Task.find(params[:task_id])
       render json: @finish_task
     end
 
