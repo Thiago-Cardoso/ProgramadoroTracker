@@ -1,54 +1,91 @@
 <div class="center">
-  <h1 class="title">Stats</h1>
+  <h1 class="title">Estatísticas</h1>
 </div>
-
-<!-- <div id="calendar"></div> -->
 
 <div class="hero-body">
   <div class="container has-text-centered">
-
-    <div class="columns is-vcentered">
-
-      <div class="column is-6">
-        <div class="box content">
-          <div id="calendar"></div>
-        </div>
+    <div class="field has-addons">
+      <%= form_tag "/dashboard/stats", role: 'search', class: 'field has-addons', method: :get do -%>
+      <div class="control">
+        <%= text_field_tag :date_from, params[:date_from], id:'datepicker1',  class: 'input', :value => Time.now.strftime("%d-%m-%Y")  %>
       </div>
-
+      <div class="control">
+        <%= text_field_tag :date_to, params[:date_to], id:'datepicker2',  class: 'input', :value => Time.now.strftime("%d-%m-%Y")  %>
+      </div>
+      <div class="control">
+        <%= button_tag "Filtrar", class: 'button is-primary' %>
+      </div>
+      <div class="control">
+        <a class="button is-warning" href="/dashboard/stats">Listar</a>
+      </div>
+      <% end %>
+    </div>
+  <hr>
+    <div class="columns is-vcentered">
       <!-- Column is-6 -->
       <div class="column is-6">
         <div class="box content">
-          <h1>Tasks</h1>
+          <h1>Minhas Tarefas</h1>
           <table class="table is-responsive">
             <thead>
               <tr>
+                <th>Tarefa</th>
                 <th>Categoria</th>
                 <th>Descrição</th>
-                <th>Tempo/Demora</th>
+                <th>Status</th>
                 <th>Data</th>
               </tr>
             </thead>
             <tbody>
+              <% @tasks.each do |task| %>
               <tr>
-                <td>cell A1</td>
-                <td>Lorem ipsum - cell B1</td>
-                <td>cell C1</td>
-                <td> cell D1</td>
+                <td><%= task.id %></td>
+                <td><%= task.description %></td>
+                <td><%= task.category.description %></td>
+                <td> <a class="<%= task.status == true ? "tag is-success" : "tag is-warning"%>" href="#"><%= task.status == true ? "Done" : "To Do"%></a></td>
+                <td><%= task.created_at.strftime("%d/%m/%y")  %></td>
               </tr>
-              <tr>
-                <td>cell A1</td>
-                <td>Lorem ipsum - cell B1</td>
-                <td>cell C1</td>
-                <td> cell D1</td>
-              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
 
+      </div><!-- End column is-6 -->
+
+      <!-- Column is-6 -->
+      <div class="column is-6">
         <div class="box content">
           <h1>Grafico</h1>
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </div><!-- End column is-6 -->
+
     </div>
   </div>
 </div>
+
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Done','To Do'],
+      datasets: [{
+        label: 'Tasks',
+        data: [12, 3],
+        backgroundColor: [
+          'rgba(35, 209, 96, 0.2)',
+          'rgba(255, 221, 87, 0.2)'
+        ],
+        borderColor: [
+          'rgba(35, 209, 96, 1)',
+          'rgba(255, 221, 87, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+
+    }
+  });
+</script>
