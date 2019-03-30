@@ -34,13 +34,7 @@ function json_data(){
     duration_break = data.duration_break;
     duration_break_long = data.duration_break_long;
     long_pause_delay = data.long_pause_delay;
-        
-    console.log("minute: "+minute);
-    console.log("have_song: "+have_song);
-    console.log("duration_break: "+duration_break); //pausa curta 2
-    console.log("duration_break_long: "+duration_break_long); //pausa longa 3
-    console.log("long_pause_delay: "+long_pause_delay); //atraso de pausa longa 2 pomodoros
-    
+
   })
   .fail(function(e){ 
     console.log("Ocorreu um erro!");
@@ -90,9 +84,6 @@ function start(control){
       $("#initial").children().attr("disabled","disabled");
       $("#pause").children().removeClass("is-hidden");
       $("#stop").children().removeClass("is-hidden");
-
-      console.log("minute:"+minute);
-      console.log("control:"+flag_color);
       
       if(flag_color === 0){
         var task_id = $("#div-todo tr").attr("id"); 
@@ -130,9 +121,6 @@ function start(control){
       num_pomodoro++;
       cont_flag_pomodoro++; 
 
-      // console.log("flag_color: "+flag_color); //pausa longa 3
-      // console.log("cont_flag_pomodoro: "+cont_flag_pomodoro); //atraso de pausa longa 2 pomodoros
-
       //pausa longa
       if( (long_pause_delay > 0) && (cont_flag_pomodoro === long_pause_delay) ){
         //troca a cor do relogio
@@ -147,8 +135,7 @@ function start(control){
         $("#clock").first().css({ backgroundColor: "#00D1B2"});
         $("#pomodoro").first().css({ color:"#feffff", backgroundColor: "#00D1B2"});
         $("#mensagem").first().css({ backgroundColor: "#00D1B2"});
-        console.log("pausa longa");
-
+        
       }else if(duration_break > 0 && flag_control === 0){ //pausa curta
         minute = duration_break;
         flag_control = 1;
@@ -158,21 +145,14 @@ function start(control){
         $("#clock").first().css({ backgroundColor: "#00D1B2"});
         $("#pomodoro").first().css({ color:"#feffff", backgroundColor: "#00D1B2"});
         $("#initial").children().attr("disabled","disabled");
-        console.log("pausa curta");
-
+        
       }else if(flag_control === 1){
         flag_control = 0;
         flag_color = 0;
         flag_interval = 1;
         control = 1;
-
         json_data();
-        // minute = 1;
-        // duration_break_long = 3;
-        // long_pause_delay = 4;
-        // have_song = 1;
-        
-        console.log("continua relogio");
+
         $('#mensagem').html("");
         $("#mensagem").first().css({ backgroundColor: "#FF3860"});
         $("#clock").first().css({ backgroundColor: "#FF3860"});
@@ -199,7 +179,6 @@ function start(control){
 
 function call_timer_interval(){
   pause = parseInt($('#pause_value').val());
-  console.log("pause_start: "+pause)
   if(pause === 0){
     $('#clock').html(str_time);
     $('#pomodoro').html("<b>POMODORO: "+num_pomodoro+"</b>");
@@ -211,14 +190,12 @@ function atualizaStatusTask(){
   // pega a primeira tarefa
   var task_id = $("#div-todo tr").attr("id"); 
   if($.type(task_id) != "undefined"){
-    // console.log(task_id);
     $.ajax({
       method: "POST",
       url: "setStatusTask/",
       data: {task_id: task_id},
       dataType: "json",
     }).done(function(return_data){
-      // console.log(return_data);
       if(return_data.status){
         $("#"+return_data.id).remove(); 
         var todo = (parseInt($("#div-todo").text()) - 1);
@@ -228,7 +205,7 @@ function atualizaStatusTask(){
       }
       
     }).fail(function(e){
-      console.log(e.responseText);
+      console.log("erro");
     });
   }
 
