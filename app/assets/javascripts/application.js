@@ -82,6 +82,23 @@ $(document).on('turbolinks:load', function() {
 		$('#task_category_id').val();
 	});
 
+		$('#template').on('change', function() {
+	
+		var input = $("#template :selected").text();
+
+		var fields = input.split(' ');
+		var configuration_task_duration = fields[1];
+		var configuration_task_duration_break = fields[2];
+		var configuration_task_duration_break_long = fields[3];
+		var configuration_task_long_pause_delay = fields[4];
+
+		$("#configuration_task_duration").val(configuration_task_duration);
+		$("#configuration_task_duration_break").val(configuration_task_duration_break);
+		$("#configuration_task_duration_break_long").val(configuration_task_duration_break_long);
+		$("#configuration_task_long_pause_delay").val(configuration_task_long_pause_delay);
+
+	  });
+
 });
 
 $(document).on('turbolinks:before-cache', clearCalendar);
