@@ -1,2 +1,30 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+
+<div class="row">
+        <div class="col m12 offset-m12">
+                <div class="field">
+                       <p id="notice"><%= notice %></p>
+                        <h5 style="text-align: left"><strong>Categorias</strong></h5>
+                        <table class="table is-responsive" width="100%">
+                            <thead>
+                              <tr>
+                                <th>Descrição</th>
+                                <th colspan="2"></th>
+                              </tr>
+                            </thead>
+                          
+                            <tbody>
+                              <% @categorys.each do |category| %>
+                                <tr>
+                                  <td><%= category.description %></td>
+                                  <td><%= link_to 'Editar', edit_category_path(category), :class => "button is-small is-link" %></td>
+                                  <td><%= link_to 'Deletar', category, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => "button is-small is-danger" %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                          <br>
+                </div>
+               <a class="button is-small is-primary" href="categories/new">Nova Categoria</a>
+        </div>
+    </div>
+    
