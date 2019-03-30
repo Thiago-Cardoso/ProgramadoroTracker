@@ -2,7 +2,7 @@ class ConfigurationTaskController < ApplicationController
   before_action :set_configuration_task, only: [:show, :edit, :update, :destroy]
   def index
     @configuration_task = ConfigurationTask.new
-    @configuration_tasks = ConfigurationTask.all
+    @configuration_tasks = ConfigurationTask.where(user_id: current_user.id)
   end
 
   
@@ -16,14 +16,27 @@ class ConfigurationTaskController < ApplicationController
   def create
     @configuration_task = ConfigurationTask.new(configuration_task_params)
     @configuration_task.user = current_user
+    @configuration_task_user = ConfigurationTask.where(user_id: current_user.id)
 
-    respond_to do |format|
-      if @configuration_task.save
-        format.html { redirect_to configuration_task_index_path, notice: 'Config was successfully created.' }
-        format.json { render :root, status: :created, location: @configuration_task_index_path }
-      else
-        format.html { redirect_to configuration_task }
-        format.json { render json: @configuration_task_index_path.errors, status: :unprocessable_entity }
+    if(@configuration_task_user.count > 0)
+      respond_to do |format|
+        if @configuration_task_user.update(configuration_task_params)
+          format.html { redirect_to configuration_task_index_path, notice: 'Update realizado com sucesso!.' }
+          format.json { render :root, status: :created, location: @configuration_task_index_path }
+        else
+          format.html { redirect_to configuration_task }
+          format.json { render json: @configuration_task_index_path.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @configuration_task.save
+          format.html { redirect_to configuration_task_index_path, notice: 'Cadastro realizado com sucesso.' }
+          format.json { render :root, status: :created, location: @configuration_task_index_path }
+        else
+          format.html { redirect_to configuration_task }
+          format.json { render json: @configuration_task_index_path.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

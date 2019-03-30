@@ -37,7 +37,7 @@ function json_data(){
 
   })
   .fail(function(e){ 
-    console.log("Ocorreu um erro!");
+    console.log(e);
   });
 }
 

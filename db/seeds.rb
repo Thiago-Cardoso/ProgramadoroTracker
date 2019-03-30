@@ -13,7 +13,7 @@ User.create(name: 'zezinho', email: 'zezinho@gmail.com', password: '123456', pas
 User.create(name: 'pedrinho', email: 'pedrinho@gmail.com', password: '123456', password_confirmation: '123456')
 
 puts "Cadastrando configuration...."
-ConfigurationTask.create(user_id: 1, duration: 25, duration_break: 2, duration_break_long: 12, long_pause_delay: 4, have_song: 0, template: 1)
+ConfigurationTask.create(user_id: 1, duration: 1, duration_break: 2, duration_break_long: 3, long_pause_delay: 4, have_song: 1, template: 1)
 ConfigurationTask.create(user_id: 2, duration: 5, duration_break: 2, duration_break_long: 2, long_pause_delay: 2, have_song: 0, template: 1)
 ConfigurationTask.create(user_id: 3, duration: 5, duration_break: 2, duration_break_long: 2, long_pause_delay: 2, have_song: 0, template: 1)
 ConfigurationTask.create(user_id: 4, duration: 6, duration_break: 3, duration_break_long: 4, long_pause_delay: 1, have_song: 0, template: 1)

@@ -18,7 +18,6 @@
             <a href="/configuration_task" class="navbar-item">Configurações</a>
             <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "navbar-item"%>
             <% else %>
-            <a href="/users/sign_in" class="navbar-item">Entrar</a>
             <a href="/users/sign_up" class="navbar-item">Criar Conta</a>
           <% end %>
       </div>

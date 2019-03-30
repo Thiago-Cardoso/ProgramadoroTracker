@@ -15,8 +15,7 @@ class PagesController < ApplicationController
     end
 
     def get_config
-      # @config = ConfigurationTask.where(user_id: current_user.id).last
-      @config = current_user.configuration_task.first
+      @config = current_user.configuration_task
       render json: @config
       @task = Task.new
     end
@@ -26,7 +25,4 @@ class PagesController < ApplicationController
       @finish_task = Task.find(params[:task_id])
       render json: @finish_task
     end
-
-    # Task.update(2,:status => false)
-
   end
