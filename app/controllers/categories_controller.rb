@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to category_url, notice: 'Categoria deletada com sucesso' }
+      format.html { redirect_to categories_path, notice: 'Categoria deletada com sucesso' }
       format.json { head :no_content }
     end
   end
