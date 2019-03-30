@@ -64,6 +64,6 @@ Project created by the following developers
 | [<img src="https://avatars1.githubusercontent.com/u/1753070?s=460&v=4" width="100px;"/><br /><sub><b>Thiago Cardoso</b></sub>](https://github.com/Thiago-Cardoso)<br /> | [<img src="https://avatars1.githubusercontent.com/u/5727529?s=460&v=4" width="100px;"/><br /><sub><b>Tiago Leal</b></sub>](https://github.com/tiagoleal)<br /> | [<img src="https://avatars0.githubusercontent.com/u/5173633?s=460&v=4" width="100px;"/><br /><sub><b>Jorge Toledo</b></sub>](https://github.com/jorgemtoledo)<br /> | [<img src="https://avatars3.githubusercontent.com/u/753592?s=460&v=4" width="100px;"/><br /><sub><b>Vanildo Prates</b></sub>](https://github.com/vprates)<br /> | [<img src="https://avatars0.githubusercontent.com/u/25970313?s=460&v=4" width="100px;"/><br /><sub><b>Guilherme Arôxa</b></sub>](https://github.com/GuilhermeAroxa)<br /> |
 | :---: | :---: | :---: | :---: | :---: |
 
-## Licença
+## License
 
 This project is licensed under a Apache license 2.0 - see file [LICENSE](LICENSE) for more details
