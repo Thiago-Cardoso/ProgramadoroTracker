@@ -6,12 +6,12 @@
     <%= devise_error_messages! %>
   
     <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label "Name" %><br />
       <%= f.text_field :name, autofocus: true %>
     </div>
   
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label "Email" %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
   
@@ -20,35 +20,35 @@
     <% end %>
   
     <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label "Senha" %> <i>(Deixe em branco se você não quer alterar senha)</i><br />
       <%= f.password_field :password, autocomplete: "off" %>
       <% if @minimum_password_length %>
         <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <em><%= @minimum_password_length %> Mínimo de caracteres</em>
       <% end %>
     </div>
   
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label "Confirme a senha" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
   
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.label "Senha atual" %> <i>(Nós precisamos de sua senha atual)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
   
     <div class="actions">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Update
-        <i class="material-icons right">send</i>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Atualizar
+        <i class="material-icons right">Enviar</i>
       </button>
     </div>
   <% end %>
   
-  <h3>Cancel my account</h3>
+  <h3>Cancelar minha conta</h3>
   
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: 'btn lighten-2 red waves-light' %></p>
+  <p>Nãi satisfeito? <%= button_to "Cancelar a conta", registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete,  class: 'btn lighten-2 red waves-light' %></p>
   
-  <%= link_to "Back", :back %>
+  <%= link_to "Voltar", :back %>
   
   </div>

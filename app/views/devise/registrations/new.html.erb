@@ -5,19 +5,19 @@
       <div class="field">
           <%= devise_error_messages! %>
       
-          <%= f.label :name, class:"label", for:"name" %>
+          <%= f.label "Nome", class:"label", for:"name" %>
             <div class="control has-icons-left">
               <%= f.text_field :name,  class:"input", placeholder:"Name",  autofocus: true %>
             </div>
     
             <div class="control has-icons-left">
-                <%= f.label :email, class:"label", for:"email" %>
+                <%= f.label "Email", class:"label", for:"email" %>
                <%= f.text_field :email, class:"input",  placeholder:"Email", autofocus: true %>
             </div>
        
             <div class="columns row-one">
                 <div class="column">
-                    <%= f.label :password, class:"label", for:"password" %>
+                    <%= f.label "Senha", class:"label", for:"password" %>
                     <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
                     <% end %><br />
@@ -29,13 +29,13 @@
     
             <div class="columns row-one">
                 <div class="column">
-                    <%= f.label :password_confirmation, class:"label", for:"Password confirmation" %>
+                    <%= f.label "Confirme sua senha", class:"label", for:"Password confirmation" %>
                     <%= f.password_field :password_confirmation, class:"input", placeholder:"Password confirmation", autocomplete: "off" %>
                 </div>
             </div>
         
           <div class="actions">
-            <button class="button is-primary is-medium" type="submit" name="action">Register
+            <button class="button is-primary is-medium" type="submit" name="action">Cadastrar
             </button>
           </div>
       </div>

@@ -21,7 +21,7 @@ class ConfigurationTaskController < ApplicationController
     if(@configuration_task_user.count > 0)
       respond_to do |format|
         if @configuration_task_user.update(configuration_task_params)
-          format.html { redirect_to configuration_task_index_path, notice: 'Update realizado com sucesso!.' }
+          format.html { redirect_to configuration_task_index_path, notice: 'Configuração alterada com sucesso!.' }
           format.json { render :root, status: :created, location: @configuration_task_index_path }
         else
           format.html { redirect_to configuration_task }
@@ -31,7 +31,7 @@ class ConfigurationTaskController < ApplicationController
     else
       respond_to do |format|
         if @configuration_task.save
-          format.html { redirect_to configuration_task_index_path, notice: 'Cadastro realizado com sucesso.' }
+          format.html { redirect_to configuration_task_index_path, notice: 'Configuração realizada com sucesso!.' }
           format.json { render :root, status: :created, location: @configuration_task_index_path }
         else
           format.html { redirect_to configuration_task }

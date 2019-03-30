@@ -11,14 +11,14 @@
             
               <div class="field">
  
-                <%= f.password_field :password,  id:"password", autocomplete: "off", placeholder:"Password" %>
+                <%= f.password_field :password,  id:"password", autocomplete: "off", placeholder:"Senha" %>
               </div>
             
               <div class="level options">
                   <% if devise_mapping.rememberable? -%>
                   <div class="checkbox level-left">
                     <%= f.check_box :remember_me, id:"checkbox",class:"regular-checkbox" %>
-                    <%= f.label :remember_me,  for:"checkbox" %>
+                    <%= f.label "lembre-me",  for:"checkbox" %>
                   </div>
                 <% end -%>
                 </div>

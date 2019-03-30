@@ -31,7 +31,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to root_path, notice: 'Task was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Tarefa realizada com sucesso!.' }
         format.json { render :root, status: :created, location: @task }
       else
         format.html { redirect_to root_path }
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to root_path, notice: 'Task was successfully update.' }
+        format.html { redirect_to root_path, notice: 'Tarefa atualizada com sucesso!.' }
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
