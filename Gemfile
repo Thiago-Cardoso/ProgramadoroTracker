@@ -22,11 +22,17 @@ gem 'chartjs-ror'
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
 group :test do
-
+  gem "factory_bot_rails"
+  gem "ffaker"
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '3.8'
+  gem 'rails-controller-testing'
+  gem 'byebug', platform: :mri
+  gem 'faker', '~> 1.9', '>= 1.9.1'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
