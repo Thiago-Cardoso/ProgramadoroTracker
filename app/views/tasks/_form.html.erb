@@ -2,7 +2,6 @@
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
       <% task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,6 +9,7 @@
       </ul>
     </div>
   <% end %>
+
 
   <div class="field">
       <%= form.label :categoria %>
@@ -19,18 +19,13 @@
           <%= form.select :category_id,  @categories.collect { |c| [c.description, c.id] }, :prompt => "Selecione uma Categoria" %>
       </div>
   </div>
-
-
   <div class="field">
     <%= form.label :tarefa %>
     <%= form.text_field :description, class:"input" %>
-
-       <div class="actions" style="margin-top:15px;">
+      <div class="actions" style="margin-top:15px;">
         <button class="button is-primary is-pulled-left" id="btnTask" type="submit">Inserir</button>
         <button class="button is-primary is-pulled-left" style="margin-left: 10px;" id="btnTaskInsert"></button>
       </div>
   </div>
-  
-    <div style="clear: both;"></div>
-
+  <div style="clear: both;"></div>
 <% end %>

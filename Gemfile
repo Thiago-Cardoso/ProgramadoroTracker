@@ -18,7 +18,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-ui-rails'
 gem 'chartjs-ror'
-
+gem 'jquery-countdown-rails'
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
 group :test do

@@ -18,6 +18,8 @@
 //= require Chart.bundle.min
 //= require activestorage
 //= require turbolinks
+//= require jquery.countdown
+//= require jquery.countdown-es
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -108,3 +110,35 @@ $(function() {
 	$('#datepicker1').datepicker({ dateFormat: 'dd-mm-yy' });
 	$('#datepicker2').datepicker({ dateFormat: 'dd-mm-yy' });
 });
+
+/* Sobrescreve  data-confirm do Rails */
+
+$.rails.allowAction = function(element) {
+  var message = element.attr('data-confirm');
+  if (!message) { return true; }
+
+  var opts = {
+	title: "Confirmação",
+	message: message,
+	buttons: {
+		confirm: {
+			label: 'Sim',
+			className: 'btn-success'
+		},
+		cancel: {
+			label: 'Não',
+			className: 'btn-danger'
+		}
+	},
+	callback: function(result) {
+	  if (result) {
+		element.removeAttr('data-confirm');
+		element.trigger('click.rails')
+	  }
+	}
+  };
+
+  bootbox.confirm(opts);
+
+  return false;
+}
