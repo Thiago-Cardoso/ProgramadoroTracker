@@ -11,6 +11,7 @@ What do you need to do?
 - [Requirements](#requirements)
 - [First steps](#first-steps)
 - [Authors](#authors)
+- [Tests](#tests)
 - [License](#license)
 
 ### Requirements
@@ -52,6 +53,47 @@ docker-compose up
 docker-compose run --rm website bundle exec rails db:migrate if necessary populate database
 
 ```
+
+## Tests
+
+For to do the tests it is necessary in docker container running:
+
+Test using Rspec:
+
+Model
+category
+
+docker-compose run --rm app bundle exec rspec spec/models/category_spec.rb
+
+configuration_task
+
+docker-compose run --rm app bundle exec rspec spec/models/configuration_task_spec.rb
+
+task
+
+docker-compose run --rm app bundle exec rspec spec/models/task_spec.rb
+
+user
+
+docker-compose run --rm app bundle exec rspec spec/models/user_spec.rb
+
+Controller
+
+categories
+
+docker-compose run --rm app bundle exec rspec spec/controllers/categories_controller.spec.rb
+
+configurationTask
+
+docker-compose run --rm app bundle exec rspec spec/controllers/configuration_task_controller.spec.rb
+
+tasks
+
+docker-compose run --rm app bundle exec rspec spec/controllers/tasks_controller.spec.rb
+
+pages
+
+docker-compose run --rm app bundle exec rspec spec/controllers/pages_controller.spec.rb
 
 
 ## Authors
