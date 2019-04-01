@@ -82,6 +82,9 @@ $(document).on('turbolinks:load', function() {
 		$('#task_category_id').val();
 	});
 
+	$('#datepicker1').datepicker({ dateFormat: 'dd-mm-yy' });
+	$('#datepicker2').datepicker({ dateFormat: 'dd-mm-yy' });
+
 		$('#template').on('change', function() {
 	
 		var input = $("#template :selected").text();
@@ -105,8 +108,6 @@ $(document).on('turbolinks:before-cache', clearCalendar);
 
 // Datepicker - Ui
 $(function() {
-	$('#datepicker1').datepicker({ dateFormat: 'dd-mm-yy' });
-	$('#datepicker2').datepicker({ dateFormat: 'dd-mm-yy' });
 
 	//notification
 	$(document).on('click', '.notification > button.delete', function() {
