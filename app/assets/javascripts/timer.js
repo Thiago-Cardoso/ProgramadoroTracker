@@ -19,6 +19,9 @@ var control = 1;
 
 $(function(){
   json_data();
+  $(".completar" ).click(function() {
+    window.location.reload();
+  });
 });
 
 function json_data(){

@@ -91,7 +91,7 @@
                                       <td><%= task.description %></td>
                                       <td><%= task.category.description %></td>
                                       <td><button class="button is-small is-link" data-id_cat="<%= task.category.id %>" data-description="<%= task.description %>" data-id="<%= task.id %>" id="edit" title="Editar"><i class="fa fa-edit"></i></button></td>
-                                      <td><%= link_to '<i class="fa fa-clipboard"></i>'.html_safe, check_task_path(task), :remote => true, :title => "Completar", :class => "button is-small is-primary" %></td>
+                                      <td><%= link_to '<i class="fa fa-clipboard"></i>'.html_safe, check_task_path(task), :remote => false, :title => "Completar", :class => "button is-small is-primary completar" %></td>
                                       <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, task, :title => "Deletar", method: :delete, data: { confirm: 'Você tem certeza que deseja excluir essa tarefa?' }, :class => "button is-small is-danger" %></td>
                                     </tr>
                                   <% end %>

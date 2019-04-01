@@ -7,10 +7,11 @@ class ConfigurationTaskController < ApplicationController
 
   
   def new
-   
+    @configuration_task = current_user.configuration_task.build
   end
 
   def edit
+
   end
 
   def create
@@ -35,7 +36,7 @@ class ConfigurationTaskController < ApplicationController
           format.json { render :root, status: :created, location: @configuration_task_index_path }
         else
           format.html { redirect_to configuration_task }
-          format.json { render json: @configuration_task_index_path.errors, status: :unprocessable_entity }
+          format.json { render json: configuration_task_index_path.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -43,6 +44,15 @@ class ConfigurationTaskController < ApplicationController
 
 
   def update
+    respond_to do |format|
+      if @configuration_task.update(configuration_task_params)
+        format.html { redirect_to configuration_task_index_path, notice: 'Configuração atualizada com sucesso!.' }
+        format.json { render :show, status: :ok, location: @category }
+      else
+        format.html { render :edit }
+        format.json { render json: configuration_task_index_path.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
