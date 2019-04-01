@@ -85,14 +85,14 @@
                           <table class="table is-fullwidth is-striped">
                               <tbody id="div-todo">
                                 <% if @tasks.count > 0 && !@array_tasks[false].nil? %>
-                                  <% @array_tasks[false].each do | task | %>
-                                    <tr id="<%= task.id %>">
+                                  <% @array_tasks[false].each do | task_cad | %>
+                                    <tr id="<%= task_cad.id %>">
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                      <td><%= task.description %></td>
-                                      <td><%= task.category.description %></td>
-                                      <td><button class="button is-small is-link" data-id_cat="<%= task.category.id %>" data-description="<%= task.description %>" data-id="<%= task.id %>" id="edit" title="Editar"><i class="fa fa-edit"></i></button></td>
-                                      <td><%= link_to '<i class="fa fa-clipboard"></i>'.html_safe, check_task_path(task), :remote => false, :title => "Completar", :class => "button is-small is-primary completar" %></td>
-                                      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, task, :title => "Deletar", method: :delete, data: { confirm: 'Você tem certeza que deseja excluir essa tarefa?' }, :class => "button is-small is-danger" %></td>
+                                      <td><%= task_cad.description %></td>
+                                      <td><%= task_cad.category.description %></td>
+                                      <td><button class="button is-small is-link" data-id_cat="<%= task_cad.category.id %>" data-description="<%= task_cad.description %>" data-id="<%= task_cad.id %>" id="edit" title="Editar"><i class="fa fa-edit"></i></button></td>
+                                      <td><%= link_to '<i class="fa fa-clipboard"></i>'.html_safe, check_task_path(task_cad), :remote => true, :title => "Completar", :class => "button is-small is-primary completar" %></td>
+                                      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, task_cad, :title => "Deletar", method: :delete, data: { confirm: 'Você tem certeza que deseja excluir essa tarefa?' }, :class => "button is-small is-danger" %></td>
                                     </tr>
                                   <% end %>
                                 <% else %>
@@ -127,10 +127,10 @@
                           <table class="table is-fullwidth is-striped">
                               <tbody>
                                 <% if @tasks.count > 0 && !@array_tasks[true].nil? %>
-                                  <% @array_tasks[true].each do | task | %>
+                                  <% @array_tasks[true].each do | task_cad | %>
                                     <tr>
                                       <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                      <td><%= task.description %></td>
+                                      <td><%= task_cad.description %></td>
                                     </tr>
                                   <% end %>
                                 <% else %>
@@ -148,23 +148,6 @@
       </div>
     </div>
   </div>
-
-
-  <%
-=begin%>
- <div>
-    <%= render 'tasks/form', task: @task %>
-  </div>
-
-  <div>
-    <%= render 'tasks/list_todo', task: @task %>
-  </div>
-
-  <div>
-    <%= render 'tasks/list_history', task: @task %>
-  </div>
-<%
-=end%>
 </div>
 
 </div>
