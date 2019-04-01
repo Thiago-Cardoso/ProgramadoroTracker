@@ -1,5 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'rspec/rails'
+require 'devise'
+
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -37,27 +41,23 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
 
+  config.include Warden::Test::Helpers
 
   #configure devise
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, :type => :controller
 
   #FactoryBot
   config.include FactoryBot::Syntax::Methods
 
-  #Configuring Shoulda Matchers
-  Shoulda::Matchers.configure do |config|
+   #Shoulda Matchers
+   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
-      # Choose a test framework:
       with.test_framework :rspec
-  
-      # Choose one or more libraries:
-      with.library :active_record
-      with.library :active_model
-      with.library :action_controller
-      # Or, choose the following (which implies all of the above):
       with.library :rails
     end
   end
+
+ 
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -1,7 +1,7 @@
 FROM ruby:2.5.1-slim
 # install dependencies
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-      build-essential nodejs libpq-dev
+      build-essential nodejs libpq-dev chromium-driver
 # set path
 ENV INSTALL_PATH /ProgramadoroTracker
 # create repository
