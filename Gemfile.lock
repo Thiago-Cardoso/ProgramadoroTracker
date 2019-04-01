@@ -45,6 +45,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    archive-zip (0.12.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     bcrypt (3.1.12)
     bindex (0.6.0)
@@ -63,6 +65,9 @@ GEM
       rails (>= 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (2.1.1)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     devise (4.6.2)
@@ -93,6 +98,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    io-like (0.3.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -246,6 +252,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   chartjs-ror
+  chromedriver-helper
   devise
   factory_bot_rails
   faker (~> 1.9, >= 1.9.1)
@@ -266,7 +273,7 @@ DEPENDENCIES
   rspec-rails (= 3.8)
   sass-rails (~> 5.0)
   selenium-webdriver
-  shoulda-matchers (~> 3.1)
+  shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

@@ -17,7 +17,7 @@
                                 <tr>
                                   <td><%= category.description %></td>
                                   <td><%= link_to 'Editar', edit_category_path(category), :class => "button is-small is-link" %></td>
-                                  <td><%= link_to 'Deletar', category, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => "button is-small is-danger" %></td>
+                                  <td><%= link_to 'Deletar', category, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => "button is-small is-danger deletar" %></td>
                                 </tr>
                               <% end %>
                             </tbody>
