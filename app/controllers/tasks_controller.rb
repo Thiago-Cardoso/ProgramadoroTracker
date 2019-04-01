@@ -31,7 +31,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to root_path, notice: 'Tarefa realizada com sucesso!.' }
+        format.html { redirect_to root_path, notice: 'Tarefa cadastrada com sucesso!.' }
         format.json { render :root, status: :created, location: @task }
       else
         format.html { redirect_to root_path }

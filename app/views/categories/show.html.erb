@@ -1,7 +1,8 @@
+
+
 <div class="row">
         <div class="col m8 offset-m2">
                 <div class="field">
-                        <p id="notice"><%= notice %></p>
                         <h5>Categorias</h5>
                 </div>
                   <p>
@@ -15,4 +16,15 @@
     </div>
     
     
-    
+<% unless notice.nil? %>
+<div class="container">
+        <div class="columns">
+                <div class="column">
+                <div class="notification is-success">
+                <button class="delete"></button>
+                <p id="notice"><%= notice %></p>
+        </div>
+        </div>
+</div>
+</div>
+<% end %>

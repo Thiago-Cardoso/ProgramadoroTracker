@@ -71,3 +71,18 @@
 	bottom:0;
 	width:100%;
 }
+
+
+//notification
+.container {
+	margin-top: 30px;
+  }
+  
+  
+  .notification > button.delete {
+	border: none;
+  }
+  
+  .is-hidden {
+	display: none;
+  }

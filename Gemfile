@@ -19,6 +19,10 @@ gem 'momentjs-rails'
 gem 'jquery-ui-rails'
 gem 'chartjs-ror'
 
+#pagination
+gem 'kaminari'
+gem 'kaminari-i18n'
+
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
 group :test do

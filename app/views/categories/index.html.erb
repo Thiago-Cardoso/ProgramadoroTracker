@@ -2,7 +2,6 @@
 <div class="row">
         <div class="col m12 offset-m12">
                 <div class="field">
-                       <p id="notice"><%= notice %></p>
                         <h5 style="text-align: left"><strong>Categorias</strong></h5>
                         <table class="table is-responsive" width="100%">
                             <thead>
@@ -22,9 +21,29 @@
                               <% end %>
                             </tbody>
                           </table>
-                          <br>
+                          <div class="text-center" style="margin-bottom: 20px;">
+                              <%= link_to_prev_page @categorys, 'Voltar' ,  class:"pagination-previous" %>
+                              <%= link_to_next_page @categorys, 'Próximo' ,  class:"pagination-next" %>
+                            </div>
                 </div>
-               <a class="button is-small is-primary" href="categories/new">Nova Categoria</a>
+              
         </div>
     </div>
-    
+
+    <div class="clear: both;"></div>
+
+    <a class="button is-small is-primary" href="categories/new">Nova Categoria</a>
+
+
+  <% unless notice.nil? %>
+    <div class="container">
+          <div class="columns">
+                    <div class="column">
+                    <div class="notification is-success">
+                    <button class="delete"></button>
+                    <p id="notice"><%= notice %></p>
+            </div>
+            </div>
+        </div>
+    </div>
+  <% end %>

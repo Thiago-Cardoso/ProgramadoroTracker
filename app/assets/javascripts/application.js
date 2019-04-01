@@ -107,4 +107,11 @@ $(document).on('turbolinks:before-cache', clearCalendar);
 $(function() {
 	$('#datepicker1').datepicker({ dateFormat: 'dd-mm-yy' });
 	$('#datepicker2').datepicker({ dateFormat: 'dd-mm-yy' });
+
+	//notification
+	$(document).on('click', '.notification > button.delete', function() {
+		$(this).parent().addClass('is-hidden');
+		return false;
+	});
+
 });

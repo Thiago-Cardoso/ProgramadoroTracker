@@ -1,22 +1,8 @@
 
 <%= form_for :configuration_task do |f| %>
 
-<% if configuration_task.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(configuration_task.errors.count, "error") %> prohibited information type from being saved:</h2>
-
-  <ul>
-  <% configuration_task.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-  </ul>
-</div>
-<% end %>
-
-
-
   <div class="field">
-  <p id="notice"><%= notice %></p>
+
     <div class="row">
         <div class="col m8 offset-m2">
           <div class="field">
@@ -64,11 +50,11 @@
       </div>
 
       <div class="field">
-            <label>
-              <%= f.check_box :have_song %>
-              <span>Tem som</span>
-            </label>
-          </div>
+        <label>
+          <%= f.check_box :have_song %>
+          <span>Tem som</span>
+        </label>
+      </div>
 
           
 
@@ -76,10 +62,49 @@
             <button class="button is-primary is-pulled-left"  type="submit">Cadastrar</button>
         </div>
 
+        <div style="clear: both"></div>
+
+        <div class="row">
+
+            <% if configuration_task.errors.any? %>
+            <div class="container">
+                <div class="columns">
+                  <div class="column">
+                    <div class="notification is-danger">
+                      <button class="delete"></button> 
+                      <div id="error_explanation">
+                        <h2><%= pluralize(configuration_task.errors.count, "error") %> prohibited information type from being saved:</h2>
+                        <ul>
+                        <% configuration_task.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+<% end %>    
+
+<% end %>
+
+    
+<% unless notice.nil? %>
+<div class="container">
+        <div class="columns">
+                <div class="column">
+                <div class="notification is-success">
+                <button class="delete"></button>
+                <p id="notice"><%= notice %></p>
+        </div>
+        </div>
+</div>
+</div>
 <% end %>
 
 
-    
     
 
 
