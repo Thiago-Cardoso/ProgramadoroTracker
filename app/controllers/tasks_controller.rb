@@ -59,7 +59,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task, notice: 'Tarefa completada com sucesso!.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Tarefa deleta com sucesso!.' }
       format.json { head :no_content }
     end
   end
