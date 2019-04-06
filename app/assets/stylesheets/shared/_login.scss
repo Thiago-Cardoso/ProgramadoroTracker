@@ -10,16 +10,13 @@ $grey-lighter: hsl(0, 0%, 86%);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
-	background: #F7F7F7;
 
 	.login-card {
 		background: #fff;
-		width: 24rem;
-		box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.11);
+	
 
 		.card-title {
-			background-color: darken($primary, 5%);
+		
 			padding: 2rem;
 
 			h1 {
@@ -29,9 +26,6 @@ $grey-lighter: hsl(0, 0%, 86%);
 			}
 		}
 
-		.content {
-			padding: 3rem 2.5rem 5rem;
-		}
 
 		#email, #password {
 			display: block;
@@ -70,27 +64,6 @@ $grey-lighter: hsl(0, 0%, 86%);
 			margin-bottom: 1.5rem;
 		}
 
-		button {
-			cursor: pointer;
-			font-size: 1.2rem;
-			color: $primary;
-			border-radius: 4rem;
-			display: block;
-			width: 100%;
-			background: transparent;
-			border: 2px solid $primary;
-			padding: 0.9rem 0 1.1rem;
-			transition: color .5s, border-color .5s;
-
-			&:hover, &:focus {
-				color: darken($primary, 10%);
-				border-color: darken($primary, 10%);
-			}
-
-			&:active {
-				transform: translateY(1px);
-			}
-		}
 	}
 }
 
@@ -144,3 +117,33 @@ form .field {
 	margin: auto;
 	max-width: 740px;
 }
+
+
+a {
+	/* color: #3273dc; */
+	cursor: pointer;
+	/* text-decoration: none; */
+}
+
+	 .card-content.login {
+   background-color: #f9f6f6;
+	border: none;
+	height: 400px;
+	padding: 20px;
+   }
+   .card-footer-item.register {
+	background-color: #19a890;
+	text-decoration: none;
+	border: none;
+	color: white;
+   }
+   .input{
+   border-width:1px;
+	border-radius:15px;
+   }
+   .card-footer {
+   border: none;
+   }
+   .label {
+	font-weight: lighter;
+   }

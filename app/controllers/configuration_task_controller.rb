@@ -64,12 +64,12 @@ class ConfigurationTaskController < ApplicationController
   
   private
     def set_configuration_task
-      @configuration_task = ConfigurationTask.find(params[:id])
+      @configuration_task = ConfigurationTask.find(params[:user_id])
     end
 
   private 
     def configuration_task_params
-      params.require(:configuration_task).permit(:duration, :duration_break, :duration_break_long, :long_pause_delay, :have_song , :template)
+      params.require(:configuration_task).permit(:user_id, :duration, :duration_break, :duration_break_long, :long_pause_delay, :have_song , :template)
     end
 
 end

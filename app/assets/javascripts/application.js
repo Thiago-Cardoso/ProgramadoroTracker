@@ -77,6 +77,11 @@ $(document).on('turbolinks:load', function() {
 		$('#btnTaskInsert').text('Inserir Novo');
 	});
 
+
+	$('button#complete').on('click', function() {
+		var id = $(this).data('id');
+	});
+
 	$('button#btnTaskInsert').on('click', function() {
 		$('#task_description').val();
 		$('#task_category_id').val();

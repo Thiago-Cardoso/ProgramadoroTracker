@@ -5,31 +5,41 @@
             <h1>Login</h1>
           </div>
           <div class="content">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="field">
-                <%= f.email_field :email, id:"email", autofocus: true, placeholder:"Email" %>
-              </div>
-            
-              <div class="field">
- 
-                <%= f.password_field :password,  id:"password", autocomplete: "off", placeholder:"Senha" %>
-              </div>
-            
-              <div class="level options">
-                  <% if devise_mapping.rememberable? -%>
-                  <div class="checkbox level-left">
-                    <%= f.check_box :remember_me, id:"checkbox",class:"regular-checkbox" %>
-                    <%= f.label "lembre-me",  for:"checkbox" %>
-                  </div>
-                <% end -%>
+            <div class="card-content login">
+              <p class="title">
+              Você já é registrado?
+              </p>
+              <p class="subtitle">
+              Login
+              </p>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                      <input class="input" name="user[email]" type="email" placeholder="Email">
+                    </div>
                 </div>
-                <div class="actions">
-                  <button class="btn waves-effect waves-light" type="submit" name="action">Logar
+                  <div class="field">
+                  <label class="label">Senha</label>
+                  <div class="control">
+                    <input class="input" name="user[password]" type="password" placeholder="Senha">
+                  </div>
+                  </div>
+                  <h6 class="subtitle is-6 has-text-centered">ou</h6>
+                  <div class="has-text-centered">
+                  <a class="button is-link">Facebook</a>
+                  <a class="button is-info">Github</a>
+                  </div>
+                  <%= render "devise/shared/links" %>
+              </div>
+                <footer class="card-footer">
+                  <button class="card-footer-item register" type="submit" name="action">Entrar
                     <i class="material-icons right"></i>
                   </button>
-                  <%= render "devise/shared/links" %>
-                </div>
-            <% end %>
+                </footer>
+              <% end %>
           </div>
-    </div>
+      </div>
   </div>
+
+ 
