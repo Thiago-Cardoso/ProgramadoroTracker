@@ -27,8 +27,18 @@
                   </div>
                   <h6 class="subtitle is-6 has-text-centered">ou</h6>
                   <div class="has-text-centered">
-                  <a class="button is-link">Facebook</a>
-                  <a class="button is-info">Github</a>
+                  <%= link_to user_facebook_omniauth_authorize_path, :class => "button is-link" do %>
+                  <span class="icon is-medium">
+                    <i class="fa fa-facebook"></i>
+                  </span>
+                  <span>Facebook</span>
+                  <% end %>
+                  <%= link_to user_github_omniauth_authorize_path, :class => "button is-black" do %>
+                  <span class="icon is-medium">
+                    <i class="fa fa-github"></i>
+                  </span>
+                  <span>GitHub</span>
+                  <% end %>
                   </div>
                   <%= render "devise/shared/links" %>
               </div>

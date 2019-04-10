@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     get 'check', on: :member
   end
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { 
+    registrations: 'registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   root to: 'pages#home'
 
   get 'config/', to: 'pages#get_config', as: :get_task

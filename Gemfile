@@ -19,6 +19,9 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-ui-rails'
 gem 'chartjs-ror'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+
 
 #pagination
 gem 'kaminari'
@@ -39,6 +42,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "ffaker"
   gem 'shoulda-matchers'
+  gem 'dotenv', '~> 2.2.1'
 end
 
 group :development do
