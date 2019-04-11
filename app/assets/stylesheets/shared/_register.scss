@@ -1,0 +1,156 @@
+$primary:      hsl(171, 100%, 41%);
+$grey-darker:  hsl(0, 0%, 21%);
+$grey-dark:    hsl(0, 0%, 29%);
+$grey:         hsl(0, 0%, 48%);
+$grey-light:   hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+
+
+#register {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.register-card {
+		background: #fff;
+        width: 25%;
+
+		.card-title {
+		
+			padding: 2rem;
+
+			h1 {
+				color: #fff;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+		}
+
+
+		#email, #password {
+			display: block;
+			width: 100%;
+			font-size: 1rem;
+			margin-bottom: 1.75rem;
+			padding: 0.25rem 0;
+			border: none;
+			border-bottom: 1px solid $grey-lighter;
+			transition: all .5s;
+
+			&:hover {
+				border-color: $grey;
+			}
+
+			&:active, &:focus {
+				border-color: $primary;
+			}
+		}
+
+		.checkbox {
+			color: $grey-light;
+			font-size: 0.8rem;
+
+			span {
+				margin-left: 0.5rem;
+			}
+		}
+
+		a {
+			font-size: 0.8rem;
+		}
+
+		.options {
+			color: $grey-light;
+			margin-bottom: 1.5rem;
+		}
+
+	}
+}
+
+label {
+	cursor: pointer;
+}
+
+.regular-checkbox {
+	display: none;
+}
+
+.regular-checkbox + label {
+	background-color: #fafafa;
+	border: 1px solid $grey-lighter;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	padding: 7px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+.regular-checkbox:checked + label {
+	background-color: #e9ecee;
+}
+
+.regular-checkbox:checked + label:after {
+	content: '\2714';
+	font-size: 11px;
+	position: absolute;
+	top: 0;
+	left: 3px;
+	color: $grey-light;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+
+
+.column {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+.row-one {
+	padding-top: 13px;
+}
+form .field {
+	margin: auto;
+	max-width: 740px;
+}
+
+
+a {
+	/* color: #3273dc; */
+	cursor: pointer;
+	/* text-decoration: none; */
+}
+
+	 .card-content.register {
+   background-color: #efeded;
+	border: none;
+	height: 400px;
+	padding: 20px;
+   }
+
+   .card-content.forgot-password {
+    background-color: #efeded;
+     border: none;
+     padding: 20px;
+    }
+
+   .card-footer-item.register {
+	background-color: #19a890;
+	text-decoration: none;
+	border: none;
+	color: white;
+   }
+   .input{
+   border-width:1px;
+	border-radius:15px;
+   }
+   .card-footer {
+   border: none;
+   }
+   .label {
+	font-weight: lighter;
+   }

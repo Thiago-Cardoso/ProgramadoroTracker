@@ -1,45 +1,59 @@
 
-  <%= devise_error_messages! %>
-  <div class="container_form">
-      <%= form_for(resource, as: resource_name, id:"register-form", url: registration_path(resource_name)) do |f| %>
-      <div class="field">
-   
-      
-          <%= f.label "Nome", class:"label", for:"name" %>
-            <div class="control has-icons-left">
-              <%= f.text_field :name,  class:"input", placeholder:"Nome",  autofocus: true %>
-            </div>
+<div class='rows'>
+  <div class='row is-narrow'></div>
+  <div class='row is-narrow'> <br /><%= devise_error_messages! %></div>
+</div>
     
-            <div class="control has-icons-left">
-                <%= f.label "Email", class:"label", for:"email" %>
-               <%= f.text_field :email, class:"input",  placeholder:"Email", autofocus: true %>
-            </div>
-       
-            <div class="columns row-one">
-                <div class="column">
-                    <%= f.label "Senha", class:"label", for:"password" %>
-                    <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> Mínimo de caracteres)</em>
-                    <% end %><br />
-                    <div class="control has-icons-left">
-                      <%= f.password_field :password, class:"input", placeholder:"Senha", autocomplete: "off" %>
-                    </div>
-                  </div>
-            </div>
-    
-            <div class="columns row-one">
-                <div class="column">
-                    <%= f.label "Confirme sua senha", class:"label", for:"Password confirmation" %>
-                    <%= f.password_field :password_confirmation, class:"input", placeholder:"Confirmação de Senha", autocomplete: "off" %>
+ <div id="register">
+  <div class="register-card">
+         <div class="card-title">
+          <h1>Registre-se</h1>
+        </div>
+        <div class="content">
+          <div class="card-content register">
+            <p class="subtitle">
+             Registre-se
+            </p>
+              <%= form_for(resource, as: resource_name, id:"register-form", url: registration_path(resource_name)) do |f| %>
+                  <div class="field">
+            
+                    <%= f.label "Nome", class:"label", for:"name" %>
+                      <div class="control has-icons-left">
+                        <%= f.text_field :name,  class:"input", placeholder:"Nome",  autofocus: true %>
+                      </div>
+              
+                      <div class="control has-icons-left">
+                          <%= f.label "Email", class:"label", for:"email" %>
+                        <%= f.text_field :email, class:"input",  placeholder:"Email", autofocus: true %>
+                      </div>
+                
+                      <div class="columns row-one">
+                          <div class="column">
+                              <%= f.label "Senha", class:"label", for:"password" %>
+                              <% if @minimum_password_length %>
+                              <em>(<%= @minimum_password_length %> Mínimo de caracteres)</em>
+                              <% end %><br />
+                              <div class="control has-icons-left">
+                                <%= f.password_field :password, class:"input", placeholder:"Senha", autocomplete: "off" %>
+                              </div>
+                            </div>
+                      </div>
+              
+                      <div class="columns row-one">
+                          <div class="column">
+                              <%= f.label "Confirme sua senha", class:"label", for:"Password confirmation" %>
+                              <%= f.password_field :password_confirmation, class:"input", placeholder:"Confirmação de Senha", autocomplete: "off" %>
+                          </div>
+                      </div>
                 </div>
-            </div>
-        
-          <div class="actions">
-            <button class="button is-primary is-medium" type="submit" name="action">Cadastrar
-            </button>
-          </div>
-      </div>
-      <% end %>
+           </div>
+            <footer class="card-footer">
+              <button class="card-footer-item register" type="submit" name="action">Cadastrar
+                <i class="material-icons right"></i>
+              </button>
+            </footer>
+        <% end %>
+    </div>
   </div>
+</div>
 
-  
