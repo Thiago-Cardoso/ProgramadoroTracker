@@ -13,6 +13,7 @@
  *= require bulma
  *= require fullcalendar
  = require jquery-ui
+ *= require jquery.countdown
  *= require_self
  */
 
@@ -20,16 +21,6 @@
 @import "shared/_login";
 @import "shared/_register";
 @import "font-awesome";
-
-#clock {
-	font: bold 24pt sans;
-	text-align: center;
-	color: #feffff;
-	background: #FF3860;
-	padding: 10px;
-	margin-bottom: 10px;
-}
-
 
 #pomodoro,#mensagem {
 	text-align: center;
@@ -43,9 +34,9 @@
 }
 
 .clock-buttons {
+	margin-left:50px;
 	margin-bottom: 10px;
 	float:left; 
-	margin-left:35px;
 }
 
 #calendar {
@@ -73,20 +64,69 @@
 	width:100%;
 }
 
-
-//notification
 .container {
-	margin-top: 10px;
-  }
-  
-  .container_form {
-    margin-top: 90px;
+margin-top: 10px;
 }
-  
-  .notification > button.delete {
+
+.container_form {
+	margin-top: 90px;
+}
+
+.notification > button.delete {
+border: none;
+}
+
+.is-hidden {
+display: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
+.container2 {
+	position: relative;
+	top: 30px;
+	width: 300px;
+	margin: 0 auto;
+}
+
+	
+.controlls {
+	position: absolute;
+	left: 75px;
+	top: 105px;
+	text-align: center;
+}
+
+.display-remain-time {
+	font-family: 'Roboto';
+	font-weight: 100;
+	font-size: 65px;
+	color: #FF3860;
+	text-align: center;
+}
+
+#pause {
+	outline: none;
+	background: transparent;
 	border: none;
-  }
-  
-  .is-hidden {
-	display: none;
-  }
+	width: 50px;
+	height: 50px;
+	position: relative;
+}
+	
+#pause:hover { opacity: 0.8; }
+
+.e-c-base {
+	fill: none;
+	stroke: #B6B6B6;
+	stroke-width: 4px
+}
+
+.e-c-progress {
+	fill: none;
+	stroke: #FF3860;
+	stroke-width: 4px;
+	transition: stroke-dashoffset 0.7s;
+}
+
+h1 { margin-top:150px; text-align:center;}
+body { background-color:#f7f7f7;}

@@ -9,22 +9,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'timer.js' %>
+    <%= javascript_include_tag 'notify.js' %>
   </head>
-
   <body>
-
     <header>
         <%= render "shared/navbar" %>
     </header>
-
-      <main>
-	      <div class="container">
-	        <%= yield %>
-	      </div>
-	    </main>
-
-	    <footer>
-	      <%= render "shared/footer" %>
-	    </footer>
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <%= render "shared/footer" %>
+    </footer>
   </body>
 </html>

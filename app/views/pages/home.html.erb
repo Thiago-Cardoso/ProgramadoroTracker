@@ -1,153 +1,16 @@
-<div class="container" style="margin-bottom:100px;">
-  <div class="row home">
-    <div class="center">
-      <h4 class="title">Aumente sua produtividade nas suas Tarefas</h4>
-    </div>
-    <br>
-    <div class="container clock-container">
-      <div id="mensagem" align="center"></div>
-      <div id="pomodoro" align="center"></div>
-      <div id="clock">00:00</div>
-      <div>
-        <div id="initial" class="clock-buttons">
-          <a class="button is-success" onclick="start(1);">Iniciar</a>
-        </div>
-        <div id="pause" class="clock-buttons">
-          <a class="button is-link is-hidden" onclick="pause_timer();">Pausar</a>
-        </div>
-        <div id="stop" class="clock-buttons">
-          <a class="button is-danger is-fullwidth is-hidden" onclick="stop();">Parar</a>
-        </div>
-        <input id="pause_value" type="hidden" value="0"  class="form-control">
-      </div>
-    </div>
-    <br>
-    <br>
-    <div>
-      <%= render 'tasks/form', task: @task %>
-    </div>
-
-
-    <br/>
-    <section class="info-tiles">
-        <div class="tile is-ancestor has-text-centered">
-          <div class="tile is-parent">
-              <article class="tile is-child box">
-                  <p class="title"><%= @tasks.count %></p>
-                  <p class="subtitle">Total de tarefas</p>
-              </article>
-          </div>
-          <div class="tile is-parent">
-              <article class="tile is-child box">
-                <% if current_user %>
-                  <p class="title" id="div-todo"><%= (!@array_tasks[false].nil?) ? @array_tasks[false].count : 0 %></p>
-                  <p class="subtitle">Tarefas a fazer</p>
-                <% else %>
-                  <p class="title">0</p>
-                  <p class="subtitle">Tarefas a fazer</p>
-                <% end %>
-              </article>
-          </div>
-          <div class="tile is-parent">
-              <article class="tile is-child box">
-                <% if current_user %>
-                  <p class="title" id="div-Tarefas feitas"><%= (!@array_tasks[true].nil?) ? @array_tasks[true].count : 0 %></p>
-                  <p class="subtitle">Tarefas feitas</p>
-                <% else %>
-                  <p class="title">0</p>
-                  <p class="subtitle">Tarefas feitas</p>
-                <% end %>
-              </article>
-          </div>
-        </div>
-    </section>
-    <hr/>
-    <div class="container">
-      <div class="column is-12">
-          <div class="columns">
-          <div class="column is-6">
-              <div class="card events-card">
-                  <header class="card-header">
-                      <p class="card-header-title">
-                        <span class="icon is-small">
-                            <i class="fa fa-history" aria-hidden="true"></i>
-                        </span>
-                        <span>Tarefas a fazer</span>
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                      <span class="icon">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                  </header>
-                  <div class="card-table">
-                      <div class="content">
-                          <table class="table is-fullwidth is-striped">
-                              <tbody id="div-todo">
-                                <% if @tasks.count > 0 && !@array_tasks[false].nil? %>
-                                  <% @array_tasks[false].each do | task_cad | %>
-                                    <tr id="<%= task_cad.id %>">
-                                      <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                      <td><%= task_cad.description %></td>
-                                      <td><%= task_cad.category.description %></td>
-                                      <td><button class="button is-small is-link" data-id_cat="<%= task_cad.category.id %>" data-description="<%= task_cad.description %>" data-id="<%= task_cad.id %>" id="edit" title="Editar"><i class="fa fa-edit"></i></button></td>
-                                      <td><%= link_to '<i class="fa fa-clipboard"></i>'.html_safe, check_task_path(task_cad), :remote => true, :title => "Completar", :class => "button is-small is-primary completar" %></td>
-                                      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, task_cad, :title => "Deletar", method: :delete, data: { confirm: 'Você tem certeza que deseja excluir essa tarefa?' }, :class => "button is-small is-danger" %></td>
-                                    </tr>
-                                  <% end %>
-                                <% else %>
-                                  <tr>
-                                    <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                    <td>Nenhum Registro encontrado!</td>
-                                  </tr>
-                                <% end %>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="column is-6">
-              <div class="card events-card">
-                  <header class="card-header">
-                      <p class="card-header-title">
-                          <span class="icon is-small">
-                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                          </span>
-                          <span> Tarefas feitas</span>
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                      <span class="icon">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                  </header>
-                  <div class="card-table">
-                      <div class="content">
-                          <table class="table is-fullwidth is-striped">
-                              <tbody>
-                                <% if @tasks.count > 0 && !@array_tasks[true].nil? %>
-                                  <% @array_tasks[true].each do | task_cad | %>
-                                    <tr>
-                                      <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                      <td><%= task_cad.description %></td>
-                                    </tr>
-                                  <% end %>
-                                <% else %>
-                                  <tr>
-                                    <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                    <td>Nenhum Registro encontrado!</td>
-                                  </tr>
-                                <% end %>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+  <%= render '/dashboard/shared/cronometer' %>
 </div>
 
+<div class="container">
+  <%= render 'tasks/form', task: @task %>
+</div>
+
+<div class="container">
+ <%= render '/dashboard/shared/totals', tasks: @tasks, array_tasks: @array_tasks %>
+</div>
+
+<hr/>
+<div class="container">
+  <%= render '/dashboard/shared/list_tasks', tasks: @tasks, array_tasks: @array_tasks %>
 </div>

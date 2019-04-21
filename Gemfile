@@ -21,7 +21,8 @@ gem 'jquery-ui-rails'
 gem 'chartjs-ror'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
-
+gem 'jquery-countdown-rails'
+gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
 #pagination
 gem 'kaminari'

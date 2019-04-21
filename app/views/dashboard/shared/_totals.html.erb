@@ -1,0 +1,32 @@
+ <section class="info-tiles">
+    <div class="tile is-ancestor has-text-centered">
+      <div class="tile is-parent">
+          <article class="tile is-child box">
+              <p class="title"><%= @tasks.count %></p>
+              <p class="subtitle">Total de tarefas</p>
+          </article>
+      </div>
+      <div class="tile is-parent">
+          <article class="tile is-child box">
+            <% if current_user %>
+              <p class="title" id="div-todo"><%= (!@array_tasks[false].nil?) ? @array_tasks[false].count : 0 %></p>
+              <p class="subtitle">Tarefas a fazer</p>
+            <% else %>
+              <p class="title">0</p>
+              <p class="subtitle">Tarefas a fazer</p>
+            <% end %>
+          </article>
+      </div>
+      <div class="tile is-parent">
+          <article class="tile is-child box">
+            <% if current_user %>
+              <p class="title" id="div-Tarefas feitas"><%= (!@array_tasks[true].nil?) ? @array_tasks[true].count : 0 %></p>
+              <p class="subtitle">Tarefas feitas</p>
+            <% else %>
+              <p class="title">0</p>
+              <p class="subtitle">Tarefas feitas</p>
+            <% end %>
+          </article>
+      </div>
+    </div>
+</section>

@@ -1,5 +1,34 @@
 <%= form_with(model: task, local: true, id:'frmtask') do |form| %>
 
+  <% if task.errors.any? %>
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div class="notification is-danger">
+            <button class="delete"></button> 
+            <div id="error_explanation">
+              <h2><%= pluralize(task.errors.count, "error") %> prohibited information type from being saved:</h2>
+              <ul>
+              <% task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% unless notice.nil? %>
+    <div class="field">
+      <div class="notification is-success">
+        <button class="delete"></button>
+        <p id="notice"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
+
   <div class="field">
       <%= form.label :categoria %>
   </div>
@@ -8,52 +37,14 @@
           <%= form.select :category_id,  @categories.collect { |c| [c.description, c.id] }, :prompt => "Selecione uma Categoria" %>
       </div>
   </div>
-
-
   <div class="field">
     <%= form.label :tarefa %>
     <%= form.text_field :description, class:"input" %>
-
-       <div class="actions" style="margin-top:15px;">
+      <div class="actions" style="margin-top:15px;">
         <button class="button is-primary is-pulled-left" id="btnTask" type="submit">Inserir</button>
         <button class="button is-primary is-pulled-left" style="margin-left: 10px;" id="btnTaskInsert"></button>
       </div>
   </div>
-  
-    <div style="clear: both;"></div>
-
-    <% if task.errors.any? %>
-    <div class="container">
-        <div class="columns">
-          <div class="column">
-            <div class="notification is-danger">
-              <button class="delete"></button> 
-              <div id="error_explanation">
-                <h2><%= pluralize(task.errors.count, "error") %> prohibited information type from being saved:</h2>
-                <ul>
-                <% task.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-     </div>
-<% end %>
-
-<% unless notice.nil? %>
-<div class="container">
-      <div class="columns">
-                <div class="column">
-                <div class="notification is-success">
-                <button class="delete"></button>
-                <p id="notice"><%= notice %></p>
-        </div>
-        </div>
-    </div>
-</div>
-<% end %>
-
-
+  <div style="clear: both;"></div>
+  <br>
 <% end %>

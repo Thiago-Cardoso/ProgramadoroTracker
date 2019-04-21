@@ -1,0 +1,43 @@
+<div class="row home">
+  <div class="center">
+    <h4 class="title">Aumente sua produtividade nas suas Tarefas</h4>
+  </div>
+  <div class="container2">
+    <div class="circle"> 
+      <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(110,110)">
+          <circle r="100" class="e-c-base"/>
+          <g transform="rotate(-90)">
+            <circle r="100" class="e-c-progress"/>
+          </g>
+        </g>
+      </svg> 
+    </div>
+    <div class="controlls">
+      <div class="display-remain-time" id="clock">00:00</div>
+    </div>
+  </div>
+  <br>
+  <div class="container clock-container">
+    <div id="div-mensagem" class="is-hidden">
+      <div id="mensagem" align="center"></div>
+      <div id="pomodoro" align="center"></div>
+    </div>
+    <br />
+    <div>
+      <div id="initial" class="clock-buttons">
+        <a class="button is-success" onclick="start(1);">Iniciar</a>
+      </div>
+      <div id="pause" class="clock-buttons">
+        <a class="button is-link is-hidden" onclick="pauseTimer();">Pausar</a>
+      </div>
+      <div id="stop" class="clock-buttons">
+        <a class="button is-danger is-fullwidth is-hidden" onclick="stop();">Parar</a>
+      </div>
+      <input id="pause_value" type="hidden" value="0"  class="form-control">
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
