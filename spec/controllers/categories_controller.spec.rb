@@ -22,6 +22,9 @@ before(:each) do
         @current_user
         expect(subject).to have_http_status(200)
       end
+      it "render the index template" do
+    	  expect(subject).to render_template(:index)
+    	end
     end
   end
 

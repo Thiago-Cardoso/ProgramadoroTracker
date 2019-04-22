@@ -7,15 +7,18 @@ RSpec.describe PagesController, type: :controller do
   #Design patterns
   @request.env["devise.mapping"] = Devise.mappings[:user] #mapping devise
   @user = FactoryBot.create(:user)
-  sign_in @user   
+  sign_in @user
   end
 
   describe "GET #home" do
+    subject { get :home }
     it "returns http success" do
-      @user   
-      get :home
-      expect(response).to have_http_status(:success)
+      @user
+      expect(subject).to have_http_status(:success)
     end
+    it "render the index template" do
+  	  expect(subject).to render_template(:home)
+  	end
   end
 
 end

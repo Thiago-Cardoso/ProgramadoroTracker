@@ -14,14 +14,17 @@ RSpec.describe TasksController, type: :controller do
   describe "as a Guest" do
     subject { get :index }
     context "#index" do
-        it "responds successfully" do
-          @current_user
-          expect(subject).to be_success
-        end
-        it "responds a 200 response" do
-          @current_user
-          expect(subject).to have_http_status(200)
-        end
+      it "responds successfully" do
+        @current_user
+        expect(subject).to be_success
+      end
+      it "responds a 200 response" do
+        @current_user
+        expect(subject).to have_http_status(200)
+      end
+      it "render the index template" do
+    	  expect(subject).to render_template(:index)
+    	end
     end
   end
 
